@@ -2,11 +2,12 @@ import './App.css';
 import { Button } from "@/components/ui/button";
 import Header from './header';
 import './index.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home"; 
 import Skills from "./pages/Skills"; 
 import Aboutme from "./pages/Aboutme";
 import Contactme from "./pages/Contactme"; 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 export default function App() {
   return (
     <div className="min-h-screen bg-white"> 
