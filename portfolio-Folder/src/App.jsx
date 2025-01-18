@@ -1,5 +1,5 @@
 import './App.css';
-import { Button } from "@/components/ui/button";
+
 import Header from './header';
 import './index.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -10,14 +10,14 @@ import Contactme from "./pages/Contactme";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white"> 
+    <div className="min-h-screen bg-white "> 
  <Router>
-      <Header /> {/* Le Header sera affiché sur toutes les pages */}
+      <Header /> 
       <Routes>
-        <Route path="/" element={<Home />} /> {/* Route pour la page d'accueil */}
-        <Route path="/Skills" element={<Skills />} /> {/* Route pour la page Work */}
-        <Route path="/Aboutme" element={<Aboutme />} /> {/* Route pour la page About */}
-        <Route path="/Contactme" element={<Contactme />} /> {/* Route pour la page Contact */}
+        <Route path="/" element={<Home />} /> 
+        <Route path="/Skills" element={<Skills />} /> 
+        <Route path="/Aboutme" element={<Aboutme />} /> 
+        <Route path="/Contactme" element={<Contactme />} /> 
       </Routes>
     </Router>
      
