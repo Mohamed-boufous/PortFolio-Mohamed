@@ -31,7 +31,7 @@ const services = [
   
 const Card = ({ image, title, description }) => {
     return (
-        <section className="min-h-screen flex items-center justify-center mt-[3rem]">
+        <section className=" flex items-center justify-center mt-[1rem]">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0 }}
@@ -42,7 +42,7 @@ const Card = ({ image, title, description }) => {
             {services.map((service, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-lg shadow-md p-4 text-center transform transition-transform hover:scale-105 group border border-black hover:border-purple-500 w-[28rem] mx-auto" // Ajout de max-w-xs et mx-auto
+                className="bg-white rounded-lg shadow-md p-4 text-center transform transition-transform hover:scale-105 group border  hover:border-purple-500 w-[28rem] mx-auto" // Ajout de max-w-xs et mx-auto
                 whileHover={{ scale: 1.05 }} // Animation au survol
                 transition={{ type: "spring", stiffness: 300 }}
               >
