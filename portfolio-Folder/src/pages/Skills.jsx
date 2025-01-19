@@ -2,18 +2,28 @@ import React from 'react';
 import Card from '../Elements/Card';
 import AnimatedText from '../Elements/AnimatedText';
 import RollingGallery from '../Elements/RollingGallery';
-import { FaReact, FaJava, FaCss3Alt, FaPython, FaNodeJs } from "react-icons/fa";
-import { SiTailwindcss, SiCplusplus, SiR } from "react-icons/si";
+import { FaReact, FaJava, FaPython } from "react-icons/fa";
+import { SiTailwindcss, SiR, SiLinux, SiC  } from "react-icons/si";
+import { DiPhp } from "react-icons/di";
+import { TbBrandCpp, TbBrandHtml5 } from "react-icons/tb";
+import { SiOctave } from "react-icons/si"; // Alternative a MATLAB
 
 const icons = [
-  FaReact, // React
-  SiTailwindcss, // Tailwind CSS
-  FaJava, // Java
-  SiCplusplus, // C++
-  FaPython, // Python
-  FaNodeJs, // Node.js
-  SiR, // R
+  FaReact,      // React
+  DiPhp,        // PHP
+  SiOctave,     // MATLAB (alternative)
+  SiR,          // R
+  SiC, 
+  // C (utilisation de C++)
+  FaJava,       // Java
+  FaPython,     // Python
+  SiTailwindcss,// Tailwind CSS
+  TbBrandHtml5, // HTML
+
+  SiLinux       // Linux
 ];
+
+
 
 const handleAnimationComplete = () => {
   console.log('All letters have animated!');
