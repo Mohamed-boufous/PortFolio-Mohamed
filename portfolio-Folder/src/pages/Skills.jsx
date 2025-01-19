@@ -1,9 +1,18 @@
-import React from 'react'
+import React from 'react';
+import Card from '../Elements/Card';
+
+
 
 const Skills = () => {
   return (
-    <div>Skills</div>
-  )
-}
+    <div>
+     <div className='pl-[5rem]'>
+     <Card>
 
-export default Skills
+</Card>
+     </div>
+    </div>
+  );
+};
+
+export default Skills;
