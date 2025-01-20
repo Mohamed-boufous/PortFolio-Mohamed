@@ -109,7 +109,7 @@ const Aboutme = () => {
       <div className="flex justify-center items-center min-h-screen">
       <WorkExperienceCard
         companyLogo={ManagerPro} // Chemin vers le logo de l'entreprise
-        companyName="Tech Solutions Inc."
+        companyName="Tech Solutions Inc"
         position="Full Stack Developer"
         duration="2022 - Present"
         projects={[

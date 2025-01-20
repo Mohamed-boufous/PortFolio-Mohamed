@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Calendar, Briefcase } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const WorkExperienceCard = ({
   companyLogo,
@@ -10,8 +10,6 @@ const WorkExperienceCard = ({
   projects = [], // Added default value to prevent undefined errors
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
-
-  // Prevent multiple clicks during animation
   const [isAnimating, setIsAnimating] = useState(false);
 
   const handleFlip = () => {
@@ -43,7 +41,9 @@ const WorkExperienceCard = ({
         }}
       >
         {/* Front face */}
-        <div className="absolute w-full h-full rounded-xl bg-gradient-to-br from-purple-400 via-purple-600 to-purple-800 p-6 [backface-visibility:hidden] shadow-xl">
+        <div
+          className="absolute w-full h-full rounded-xl bg-gradient-to-br from-purple-400 via-purple-600 to-purple-800 p-6 [backface-visibility:hidden] shadow-xl"
+        >
           <motion.div
             className="flex flex-col h-full items-center justify-center"
             initial={false}
@@ -62,39 +62,64 @@ const WorkExperienceCard = ({
               />
             </motion.div>
             <motion.div className="space-y-2 text-center">
-              <h2 className="text-2xl font-bold text-white">
+              <motion.h2
+                className="text-2xl font-bold text-white"
+                initial={{ x: -50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+              >
                 {companyName}
-              </h2>
-              <h3 className="text-xl text-purple-200">
+              </motion.h2>
+              <motion.h3
+                className="text-xl text-purple-200"
+                initial={{ x: 50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.3 }}
+              >
                 {position}
-              </h3>
-              <div className="mt-4 flex items-center justify-center text-purple-100">
-                <Calendar className="w-5 h-5 mr-2" />
+              </motion.h3>
+              <motion.div
+                className="mt-4 flex items-center justify-center text-purple-100"
+                whileHover={{ scale: 1.05 }}
+              >
+                <motion.div
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Calendar className="w-5 h-5 mr-2" />
+                </motion.div>
                 <span>{duration}</span>
-              </div>
+              </motion.div>
             </motion.div>
           </motion.div>
         </div>
 
         {/* Back face */}
-        <div className="absolute w-full h-full rounded-xl bg-gradient-to-br from-purple-800 via-purple-600 to-purple-400 p-6 text-white [backface-visibility:hidden] [transform:rotateY(180deg)] shadow-xl">
+        <div
+          className="absolute w-full h-full rounded-xl bg-gradient-to-br from-purple-800 via-purple-600 to-purple-400 p-6 text-white [backface-visibility:hidden] [transform:rotateY(180deg)] shadow-xl"
+        >
           <motion.div
             className="flex flex-col h-full"
             initial={false}
             animate={{ opacity: isFlipped ? 1 : 0 }}
             transition={{ duration: 0.3, delay: 0.3 }}
           >
-            <h3 className="text-2xl font-bold mb-4">
+            <motion.h3
+              className="text-2xl font-bold mb-4"
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.4 }}
+            >
               Projects Completed
-            </h3>
+            </motion.h3>
             <div className="flex-grow overflow-y-auto">
               <ul className="list-disc list-inside space-y-2">
                 {projects.map((project, index) => (
                   <motion.li
                     key={index}
                     className="text-lg text-purple-200"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: isFlipped ? 1 : 0, x: isFlipped ? 0 : -20 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: isFlipped ? 1 : 0, y: isFlipped ? 0 : 20 }}
                     transition={{ delay: 0.4 + (index * 0.1) }}
                   >
                     {project}
@@ -102,12 +127,17 @@ const WorkExperienceCard = ({
                 ))}
               </ul>
             </div>
-            <div className="mt-4 flex items-center justify-center">
+            <motion.div
+              className="mt-4 flex items-center justify-center"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.5 }}
+            >
               <Briefcase className="w-6 h-6 mr-2 text-purple-200" />
               <span className="text-lg font-semibold">
                 {projects.length} Project{projects.length !== 1 ? 's' : ''}
               </span>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </motion.div>
