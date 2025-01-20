@@ -64,3 +64,16 @@
     @apply bg-background text-foreground;
   }
 }
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Cacher la scrollbar pour Firefox */
+html {
+  scrollbar-width: none;
+}
+
+/* Empêcher le défilement horizontal */
+body {
+  overflow-x: hidden;
+}

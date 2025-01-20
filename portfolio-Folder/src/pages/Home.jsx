@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion'; // Importez framer-motion
 import BlurText from "../BlurText/BlurText";
 import TrueFocus from '../TrueFocus/TrueFocus';
-import SplashCursor from "../SplashCursor/SplashCursor";
+
 import Profile from '../Elements/Profile';
 
 const handleAnimationComplete = () => {

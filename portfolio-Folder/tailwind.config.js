@@ -6,15 +6,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-	screens : {
-		sm:'640px' , 
-		md:'768px', 
-		lg:'960px', 
-		xl:'1200px'
-
-
-	} ,
-	 
+  	screens: {
+  		sm: '640px',
+  		md: '768px',
+  		lg: '960px',
+  		xl: '1200px'
+  	},
   	extend: {
   		borderRadius: {
   			lg: 'var(--radius)',
@@ -61,6 +58,16 @@ export default {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
+  			}
+  		},
+  		animation: {
+  			'border-beam': 'border-beam calc(var(--duration)*1s) infinite linear'
+  		},
+  		keyframes: {
+  			'border-beam': {
+  				'100%': {
+  					'offset-distance': '100%'
+  				}
   			}
   		}
   	}
