@@ -28,12 +28,12 @@ const handleAnimationComplete = () => {
 
 const Skills = () => {
   return (
-    <div className="flex flex-col items-center mt-[4rem] space-y-8">
+    <div className="flex flex-col items-center mt-8 md:mt-[4rem] space-y-8">
       {/* Section "Skills" */}
       <div className="w-full flex justify-center">
         <AnimatedText
           text="Skills"
-          className="text-5xl font-mono text-purple-500"
+          className="text-3xl md:text-5xl font-mono text-purple-500"
           delay={150}
           animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
           animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
@@ -45,15 +45,15 @@ const Skills = () => {
       </div>
 
       {/* Section Carte */}
-      <div className="w-full px-4 md:px-[3rem] mt-8">
+      <div className="w-full px-4 md:px-[3rem] mt-4 md:mt-8">
         <Card />
       </div>
 
       {/* Section "Technologies" */}
-      <div className="w-full flex justify-center pt-[3rem]">
+      <div className="w-full flex justify-center pt-4 md:pt-[3rem]">
         <AnimatedText
           text="Technologies"
-          className="text-5xl font-mono text-purple-500"
+          className="text-3xl md:text-5xl font-mono text-purple-500"
           delay={150}
           animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
           animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}

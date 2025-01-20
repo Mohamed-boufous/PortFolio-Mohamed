@@ -19,7 +19,7 @@ const RollingGallery = ({
     }
   }, []);
 
-  const cylinderWidth = isScreenSizeSm ? 1000 : 1500; // Augmenter la largeur du cylindre
+  const cylinderWidth = isScreenSizeSm ? 800 : 1500; // Réduire la largeur du cylindre pour les petits écrans
   const faceCount = icons.length;
   const faceWidth = (cylinderWidth / faceCount) * 1.5;
   const radius = cylinderWidth / (2 * Math.PI);
@@ -87,7 +87,7 @@ const RollingGallery = ({
   };
 
   return (
-    <div className="relative h-[300px] w-full overflow-hidden">
+    <div className="relative h-[200px] sm:h-[300px] w-full overflow-hidden">
       <div className="flex h-full items-center justify-center [perspective:1000px] [transform-style:preserve-3d]">
         <motion.div
           drag="x"
@@ -104,12 +104,12 @@ const RollingGallery = ({
             width: cylinderWidth,
             transformStyle: "preserve-3d",
           }}
-          className="flex min-h-[150px] cursor-grab items-center justify-center [transform-style:preserve-3d]"
+          className="flex min-h-[100px] sm:min-h-[150px] cursor-grab items-center justify-center [transform-style:preserve-3d]"
         >
           {icons.map(({ icon: Icon, name }, i) => (
             <div
               key={i}
-              className="group absolute flex h-fit flex-col items-center justify-center [backface-visibility:hidden] md:p-[6%]"
+              className="group absolute flex h-fit flex-col items-center justify-center [backface-visibility:hidden] p-[4%] sm:p-[6%]"
               style={{
                 width: `${faceWidth}px`,
                 transform: `rotateY(${(360 / faceCount) * i}deg) translateZ(${radius}px)`,
@@ -117,11 +117,11 @@ const RollingGallery = ({
             >
               {/* Icône de la technologie */}
               <Icon
-                className="pointer-events-none h-[120px] w-[120px] text-black transition-transform duration-300 ease-out group-hover:scale-105 sm:h-[80px] sm:w-[80px]"
+                className="pointer-events-none h-[60px] w-[60px] sm:h-[80px] sm:w-[80px] text-black transition-transform duration-300 ease-out group-hover:scale-105"
               />
 
               {/* Nom de la technologie (affiché au survol) */}
-              <span className="mt-2 text-sm font-medium text-black opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span className="mt-2 text-xs sm:text-sm font-medium text-black opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 {name}
               </span>
             </div>

@@ -15,7 +15,7 @@ export default function Header() {
   const activeButton = location.pathname;
 
   return (
-    <nav className="bg-white ">
+    <nav className="bg-white shadow-md">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           {/* Logo */}
@@ -27,7 +27,7 @@ export default function Header() {
           <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
             <button
               type="button"
-              className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:text-purple-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-controls="mobile-menu"
               aria-expanded={isMenuOpen}
               onClick={toggleMenu}
@@ -113,12 +113,12 @@ export default function Header() {
       {/* Menu mobile */}
       {isMenuOpen && (
         <div className="sm:hidden" id="mobile-menu">
-          <div className="space-y-1 px-2 pb-3 pt-2">
+          <div className="flex flex-col space-y-1 px-2 pb-3 pt-2">
             {/* Bouton Home */}
             <Button1
               to="/"
               isActive={activeButton === "/"} // Active si l'URL est "/"
-              className="block w-full text-left"
+              className="block w-full text-center py-2 hover:bg-purple-100 rounded-lg transition-colors duration-300"
             >
               Home
             </Button1>
@@ -127,7 +127,7 @@ export default function Header() {
             <Button1
               to="/skills"
               isActive={activeButton === "/skills"} // Active si l'URL est "/skills"
-              className="block w-full text-left"
+              className="block w-full text-center py-2 hover:bg-purple-100 rounded-lg transition-colors duration-300"
             >
               Skills
             </Button1>
@@ -136,7 +136,7 @@ export default function Header() {
             <Button1
               to="/aboutme"
               isActive={activeButton === "/aboutme"} // Active si l'URL est "/aboutme"
-              className="block w-full text-left"
+              className="block w-full text-center py-2 hover:bg-purple-100 rounded-lg transition-colors duration-300"
             >
               About me
             </Button1>
@@ -145,7 +145,7 @@ export default function Header() {
             <Button1
               to="/contactme"
               isActive={activeButton === "/contactme"} // Active si l'URL est "/contactme"
-              className="block w-full text-left"
+              className="block w-full text-center py-2 hover:bg-purple-100 rounded-lg transition-colors duration-300"
             >
               Contact me
             </Button1>

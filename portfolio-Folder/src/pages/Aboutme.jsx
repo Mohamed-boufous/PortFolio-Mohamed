@@ -8,6 +8,9 @@ import Librolink from "../assets/LibroLink.png";
 import Gig from "../assets/Gig Galaxy.png";
 import ManagerPro from "../assets/ManagerPro.png";
 import WorkExperienceCard from '../Elements/WorkExperienceCard';
+import Valableu from "../assets/valableu.jpg";
+import valaorange from "../assets/valaorange.jpeg";
+
 
 const handleAnimationComplete = () => {
   console.log('All letters have animated!');
@@ -69,7 +72,7 @@ const Aboutme = () => {
       </div>
 
       <div className="flex flex-col md:flex-row justify-center items-center gap-8 pb-[2rem] p-4">
-        {/* Carte pour Librolink */}
+       
         <ProjectCard
           imageUrl={Librolink}
           projectName="Librolink"
@@ -106,16 +109,28 @@ const Aboutme = () => {
           onAnimationComplete={handleAnimationComplete}
         />
       </div>
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-8 pb-[2rem] p-4">
       <WorkExperienceCard
-        companyLogo={ManagerPro} // Chemin vers le logo de l'entreprise
-        companyName="Tech Solutions Inc"
-        position="Full Stack Developer"
-        duration="2022 - Present"
+        companyLogo={Valableu} 
+        companyName="Vala Bleu"
+        position="Internship in web development"
+        duration="2023-06 - 2023-08"
         projects={[
-          "Developed a responsive e-commerce platform.",
-          "Implemented a real-time chat application.",
-          "Optimized database queries for faster performance.",
+       "Developed a responsive car rental platform",
+"A diverse catalogue of cars with a modern design",
+"Connected to a database for better management"
+        ]}
+      />
+      <WorkExperienceCard
+        companyLogo={valaorange} 
+        companyName="Vala orange"
+        position="Internship in web development"
+        duration="2024-04 - 2024-06"
+        projects={[
+     "Gig Galaxy, an online freelancing platform",
+"Optimized for freelancers and clients, offering a wide range of services at various prices",
+"Real-time chat for users"
+        
         ]}
       />
     </div>

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion'; // Importez framer-motion
 import BlurText from "../BlurText/BlurText";
 import TrueFocus from '../TrueFocus/TrueFocus';
-
 import Profile from '../Elements/Profile';
 
 const handleAnimationComplete = () => {
@@ -17,18 +16,24 @@ const Home = () => {
   };
 
   return (
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "100vh", padding: "0 2rem", position: "relative" }}>
-      <div className='mb-16'>
+    <div className="flex flex-col md:flex-row items-center justify-center md:justify-between min-h-screen p-4 md:p-8 relative">
+      {/* Composant Profile en haut sur les petits écrans */}
+      <div className="order-1 md:order-2 mb-8 md:mb-0">
+        <Profile />
+      </div>
+
+      {/* Contenu principal en bas sur les petits écrans */}
+      <div className="order-2 md:order-1 mb-8 md:mb-16 text-center md:text-left">
         <BlurText
           text="Welcome To My Portfolio"
           delay={200}
           animateBy="words"
           direction="top"
           onAnimationComplete={handleAnimationComplete}
-          className="text-5xl font-bold mb-7"
+          className="text-3xl md:text-5xl font-bold mb-4 md:mb-7"
         />
         
-        <h1 className='text-[2rem] font-bold mb-4'>
+        <h1 className='text-2xl md:text-[2rem] font-bold mb-4'>
           My name is{' '}
           <span className='inline-block'>
             <TrueFocus
@@ -42,13 +47,13 @@ const Home = () => {
           </span>
         </h1>
 
-        <p className='text-xl text-gray-700 leading-7 mb-6'>
+        <p className='text-lg md:text-xl text-gray-700 leading-7 mb-6'>
           <span className='block'>I'm a student in AI and Big Data Engineering.</span>
           <span className='block'>I'm interested in web development, AI, and Big Data.</span>
         </p>
 
         {/* Bouton de téléchargement avec animation */}
-        <div className="flex items-center space-x-4">
+        <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
           <motion.a
             href="/mohamed.pdf"
             download="Mohamed_Boufous_CV.pdf"
@@ -92,8 +97,6 @@ const Home = () => {
           </AnimatePresence>
         </div>
       </div>
-
-      <Profile />
     </div>
   );
 };

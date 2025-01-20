@@ -71,7 +71,7 @@ const WorkExperienceCard = ({
                 {companyName}
               </motion.h2>
               <motion.h3
-                className="text-xl text-purple-200"
+                className="text-lg text-purple-200"
                 initial={{ x: 50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.3 }}
@@ -110,7 +110,7 @@ const WorkExperienceCard = ({
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              Projects Completed
+              Project Completed
             </motion.h3>
             <div className="flex-grow overflow-y-auto">
               <ul className="list-disc list-inside space-y-2">
@@ -135,7 +135,7 @@ const WorkExperienceCard = ({
             >
               <Briefcase className="w-6 h-6 mr-2 text-purple-200" />
               <span className="text-lg font-semibold">
-                {projects.length} Project{projects.length !== 1 ? 's' : ''}
+                 Project
               </span>
             </motion.div>
           </motion.div>
