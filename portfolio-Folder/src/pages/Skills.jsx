@@ -3,27 +3,24 @@ import Card from '../Elements/Card';
 import AnimatedText from '../Elements/AnimatedText';
 import RollingGallery from '../Elements/RollingGallery';
 import { FaReact, FaJava, FaPython } from "react-icons/fa";
-import { SiTailwindcss, SiR, SiLinux, SiC  } from "react-icons/si";
+import { SiTailwindcss, SiR, SiLinux, SiC } from "react-icons/si";
 import { DiPhp } from "react-icons/di";
 import { TbBrandCpp, TbBrandHtml5 } from "react-icons/tb";
-import { SiOctave } from "react-icons/si"; // Alternative a MATLAB
+import { SiOctave } from "react-icons/si"; // Alternative à MATLAB
 
+// Liste des icônes avec leurs noms
 const icons = [
-  FaReact,      // React
-  DiPhp,        // PHP
-  SiOctave,     // MATLAB (alternative)
-  SiR,          // R
-  SiC, 
-  // C (utilisation de C++)
-  FaJava,       // Java
-  FaPython,     // Python
-  SiTailwindcss,// Tailwind CSS
-  TbBrandHtml5, // HTML
-
-  SiLinux       // Linux
+  { icon: FaReact, name: "React" },
+  { icon: DiPhp, name: "PHP" },
+  { icon: SiOctave, name: "MATLAB" },
+  { icon: SiR, name: "R" },
+  { icon: SiC, name: "C" },
+  { icon: FaJava, name: "Java" },
+  { icon: FaPython, name: "Python" },
+  { icon: SiTailwindcss, name: "Tailwind " },
+  { icon: TbBrandHtml5, name: "HTML" },
+  { icon: SiLinux, name: "Linux" },
 ];
-
-
 
 const handleAnimationComplete = () => {
   console.log('All letters have animated!');
@@ -48,12 +45,12 @@ const Skills = () => {
       </div>
 
       {/* Section Carte */}
-      <div className="w-full pl-[3rem] mt-8">
+      <div className="w-full px-4 md:px-[3rem] mt-8">
         <Card />
       </div>
 
       {/* Section "Technologies" */}
-      <div className="w-full flex justify-center pt-[3rem] ">
+      <div className="w-full flex justify-center pt-[3rem]">
         <AnimatedText
           text="Technologies"
           className="text-5xl font-mono text-purple-500"
@@ -67,8 +64,8 @@ const Skills = () => {
         />
       </div>
 
-    
-      <div className="w-full flex items-center justify-center ">
+      {/* Section Galerie des technologies */}
+      <div className="w-full flex items-center justify-center px-4">
         <RollingGallery
           autoplay={true}
           pauseOnHover={true}

@@ -1,4 +1,3 @@
-// Header.jsx
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom"; // Importez useLocation
 import logo from "./assets/logo.png";
@@ -16,13 +15,15 @@ export default function Header() {
   const activeButton = location.pathname;
 
   return (
-    <nav className="bg-white">
+    <nav className="bg-white ">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
+          {/* Logo */}
           <div className="flex-shrink-0 w-[20%]">
             <img className="h-60 w-auto" src={logo} alt="Your Company" />
           </div>
 
+          {/* Bouton du menu mobile */}
           <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
             <button
               type="button"
@@ -70,6 +71,7 @@ export default function Header() {
             </button>
           </div>
 
+          {/* Menu desktop */}
           <div className="hidden sm:ml-6 sm:block w-[80%]">
             <div className="flex justify-center space-x-6">
               {/* Bouton Home */}
@@ -108,44 +110,45 @@ export default function Header() {
         </div>
       </div>
 
+      {/* Menu mobile */}
       {isMenuOpen && (
         <div className="sm:hidden" id="mobile-menu">
           <div className="space-y-1 px-2 pb-3 pt-2">
-            <a
-              href="#"
-              className={`block rounded-md px-3 py-2 text-base font-medium text-white ${
-                activeButton === "/dashboard" ? "bg-purple-600" : "bg-gray-800"
-              } hover:bg-yellow-500`}
+            {/* Bouton Home */}
+            <Button1
+              to="/"
+              isActive={activeButton === "/"} // Active si l'URL est "/"
+              className="block w-full text-left"
             >
-              Dashboard
-            </a>
+              Home
+            </Button1>
 
-            <a
-              href="#"
-              className={`block rounded-md px-3 py-2 text-base font-medium text-white ${
-                activeButton === "/team" ? "bg-purple-600" : "bg-gray-800"
-              } hover:bg-yellow-500`}
+            {/* Bouton Skills */}
+            <Button1
+              to="/skills"
+              isActive={activeButton === "/skills"} // Active si l'URL est "/skills"
+              className="block w-full text-left"
             >
-              Team
-            </a>
+              Skills
+            </Button1>
 
-            <a
-              href="#"
-              className={`block rounded-md px-3 py-2 text-base font-medium text-white ${
-                activeButton === "/projects" ? "bg-purple-600" : "bg-gray-800"
-              } hover:bg-yellow-500`}
+            {/* Bouton About me */}
+            <Button1
+              to="/aboutme"
+              isActive={activeButton === "/aboutme"} // Active si l'URL est "/aboutme"
+              className="block w-full text-left"
             >
-              Projects
-            </a>
+              About me
+            </Button1>
 
-            <a
-              href="#"
-              className={`block rounded-md px-3 py-2 text-base font-medium text-white ${
-                activeButton === "/calendar" ? "bg-purple-600" : "bg-gray-800"
-              } hover:bg-yellow-500`}
+            {/* Bouton Contact me */}
+            <Button1
+              to="/contactme"
+              isActive={activeButton === "/contactme"} // Active si l'URL est "/contactme"
+              className="block w-full text-left"
             >
-              Calendar
-            </a>
+              Contact me
+            </Button1>
           </div>
         </div>
       )}
