@@ -112,46 +112,47 @@ export default function Header() {
 
       {/* Menu mobile */}
       {isMenuOpen && (
-        <div className="sm:hidden" id="mobile-menu">
-          <div className="flex flex-col space-y-1 px-2 pb-3 pt-2">
-            {/* Bouton Home */}
-            <Button1
-              to="/"
-              isActive={activeButton === "/"} // Active si l'URL est "/"
-              className="block w-full text-center py-2 hover:bg-purple-100 rounded-lg transition-colors duration-300"
-            >
-              Home
-            </Button1>
+  <div className="sm:hidden" id="mobile-menu">
+    <div className="flex flex-col items-center gap-2 px-4 pb-3 pt-2 overflow-hidden transition-all duration-300 ease-in-out">
+      {/* Bouton Home */}
+      <Button1
+        to="/"
+        isActive={activeButton === "/"}
+        className="w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto"
+      >
+        Home
+      </Button1>
 
-            {/* Bouton Skills */}
-            <Button1
-              to="/skills"
-              isActive={activeButton === "/skills"} // Active si l'URL est "/skills"
-              className="block w-full text-center py-2 hover:bg-purple-100 rounded-lg transition-colors duration-300"
-            >
-              Skills
-            </Button1>
+      {/* Bouton Skills */}
+      <Button1
+        to="/skills"
+        isActive={activeButton === "/skills"}
+        className="w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto"
+      >
+        Skills
+      </Button1>
 
-            {/* Bouton About me */}
-            <Button1
-              to="/aboutme"
-              isActive={activeButton === "/aboutme"} // Active si l'URL est "/aboutme"
-              className="block w-full text-center py-2 hover:bg-purple-100 rounded-lg transition-colors duration-300"
-            >
-              About me
-            </Button1>
+      {/* Bouton About me */}
+      <Button1
+        to="/aboutme"
+        isActive={activeButton === "/aboutme"}
+        className="w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto"
+      >
+        About me
+      </Button1>
 
-            {/* Bouton Contact me */}
-            <Button1
-              to="/contactme"
-              isActive={activeButton === "/contactme"} // Active si l'URL est "/contactme"
-              className="block w-full text-center py-2 hover:bg-purple-100 rounded-lg transition-colors duration-300"
-            >
-              Contact me
-            </Button1>
-          </div>
-        </div>
-      )}
+      {/* Bouton Contact me */}
+      <Button1
+        to="/contactme"
+        isActive={activeButton === "/contactme"}
+        className="w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto"
+      >
+        Contact me
+      </Button1>
+    </div>
+  </div>
+)}
+
     </nav>
   );
 }
