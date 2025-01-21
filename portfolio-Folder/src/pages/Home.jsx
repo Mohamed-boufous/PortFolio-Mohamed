@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion'; // Importez framer-motion
+import { motion, AnimatePresence } from 'framer-motion';
 import BlurText from "../BlurText/BlurText";
 import TrueFocus from '../TrueFocus/TrueFocus';
 import Profile from '../Elements/Profile';
@@ -23,16 +23,19 @@ const Home = () => {
       </div>
 
       {/* Contenu principal en bas sur les petits écrans */}
-      <div className="order-2 md:order-1 mb-8 md:mb-16 text-center md:text-left">
-        <BlurText
-          text="Welcome To My Portfolio"
-          delay={200}
-          animateBy="words"
-          direction="top"
-          onAnimationComplete={handleAnimationComplete}
-          className="text-3xl md:text-5xl font-bold mb-4 md:mb-7"
-        />
-        
+      <div className="order-2 md:order-1 mb-8 md:mb-16 w-full text-center md:text-left">
+        {/* Centrer uniquement sur les écrans mobiles */}
+        <div className="flex justify-center md:justify-start">
+          <BlurText
+            text="Welcome To My Portfolio"
+            delay={200}
+            animateBy="words"
+            direction="top"
+            onAnimationComplete={handleAnimationComplete}
+            className="text-3xl md:text-5xl font-bold mb-4 md:mb-7"
+          />
+        </div>
+
         <h1 className='text-2xl md:text-[2rem] font-bold mb-4'>
           My name is{' '}
           <span className='inline-block'>

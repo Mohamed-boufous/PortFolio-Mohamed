@@ -508,8 +508,8 @@ const X = {
     clearcoat: 1,
     clearcoatRoughness: 0.15,
   },
-  minSize: 0.5, // Taille minimale des objets
-  maxSize: 1, // Taille maximale des objets
+  minSize: 0.2, // Taille minimale des objets
+  maxSize: 0.7, // Taille maximale des objets
   size0: 1, // Taille initiale
   gravity: 0.5, // Gravité
   friction: 0.9975, // Frottement

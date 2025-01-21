@@ -19,8 +19,7 @@ const Ballpit = ({ className = "", followCursor = true, ...props }) => {
         spheresInstanceRef.current.dispose();
       }
     };
-    // Dependencies intentionally left empty for single initialization
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+   
   }, []);
 
   return <canvas className={`${className} w-full h-full`} ref={canvasRef} />;

@@ -1,18 +1,23 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom"; // Importez useLocation
+import { useLocation, useNavigate } from "react-router-dom"; // Importez useLocation et useNavigate
 import logo from "./assets/logo.png";
 import Button1 from "./Button1";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation(); // Utilisez useLocation pour obtenir l'URL actuelle
+  const location = useLocation();
+  const navigate = useNavigate(); // Utilisez useNavigate pour la redirection
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Déterminez le bouton actif en fonction de l'URL
   const activeButton = location.pathname;
+
+  // Fonction pour rediriger vers la page d'accueil
+  const goToHome = () => {
+    navigate("/"); // Redirige vers la page d'accueil
+  };
 
   return (
     <nav className="bg-white shadow-md">
@@ -20,7 +25,12 @@ export default function Header() {
         <div className="relative flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0 w-[20%]">
-            <img className="h-60 w-auto" src={logo} alt="Your Company" />
+            <img
+              className="h-60 w-auto cursor-pointer" // Ajoutez cursor-pointer pour indiquer que c'est cliquable
+              src={logo}
+              alt="Your Company"
+              onClick={goToHome} // Ajoutez le gestionnaire onClick
+            />
           </div>
 
           {/* Bouton du menu mobile */}
@@ -112,47 +122,46 @@ export default function Header() {
 
       {/* Menu mobile */}
       {isMenuOpen && (
-  <div className="sm:hidden" id="mobile-menu">
-    <div className="flex flex-col items-center gap-2 px-4 pb-3 pt-2 overflow-hidden transition-all duration-300 ease-in-out">
-      {/* Bouton Home */}
-      <Button1
-        to="/"
-        isActive={activeButton === "/"}
-        className="w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto"
-      >
-        Home
-      </Button1>
+        <div className="sm:hidden" id="mobile-menu">
+          <div className="flex flex-col items-center gap-2 px-4 pb-3 pt-2 overflow-hidden transition-all duration-300 ease-in-out">
+            {/* Bouton Home */}
+            <Button1
+              to="/"
+              isActive={activeButton === "/"}
+              className="w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto"
+            >
+              Home
+            </Button1>
 
-      {/* Bouton Skills */}
-      <Button1
-        to="/skills"
-        isActive={activeButton === "/skills"}
-        className="w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto"
-      >
-        Skills
-      </Button1>
+            {/* Bouton Skills */}
+            <Button1
+              to="/skills"
+              isActive={activeButton === "/skills"}
+              className="w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto"
+            >
+              Skills
+            </Button1>
 
-      {/* Bouton About me */}
-      <Button1
-        to="/aboutme"
-        isActive={activeButton === "/aboutme"}
-        className="w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto"
-      >
-        About me
-      </Button1>
+            {/* Bouton About me */}
+            <Button1
+              to="/aboutme"
+              isActive={activeButton === "/aboutme"}
+              className="w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto"
+            >
+              About me
+            </Button1>
 
-      {/* Bouton Contact me */}
-      <Button1
-        to="/contactme"
-        isActive={activeButton === "/contactme"}
-        className="w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto"
-      >
-        Contact me
-      </Button1>
-    </div>
-  </div>
-)}
-
+            {/* Bouton Contact me */}
+            <Button1
+              to="/contactme"
+              isActive={activeButton === "/contactme"}
+              className="w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto"
+            >
+              Contact me
+            </Button1>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
