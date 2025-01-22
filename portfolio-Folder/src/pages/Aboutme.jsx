@@ -1,15 +1,15 @@
 import React from 'react';
 import { SchoolCard } from '../Elements/SchoolCard';
-import est from "../../public/assets/EST-Agadir-750x400-TGd-1TBm.jpg";
-import Ensaa from "../../public/assets/Ensaa-BEj3jcdo.png"; // Remplacez par l'image de la deuxième école
+import est from "../assets/EST-Agadir.jpg";
+import Ensaa from "../assets/Ensaa.png"; 
 import AnimatedText from '../Elements/AnimatedText';
 import ProjectCard from '../Elements/ProjectCard';
-import Librolink from "../../public/assets/LibroLink-B3VFQPZX.png";
-import Gig from "../../public/assets/Gig Galaxy-Bij3yBWn.png";
-import ManagerPro from "../../public/assets/ManagerPro-D_WCLvgl.png";
+import Librolink from "../assets/LibroLink.png";
+import Gig from "../assets/Gig Galaxy.png";
+import ManagerPro from "../assets/ManagerPro.png";
 import WorkExperienceCard from '../Elements/WorkExperienceCard';
-import Valableu from "../../public/assets/valableu-gkStkOKZ.jpg";
-import valaorange from  "../../public/assets/valaorange-CxU0Qskl.jpeg";
+import Valableu from "../assets/valableu.jpg";
+import valaorange from  "../assets/valaorange.jpeg";
 
 
 const handleAnimationComplete = () => {
