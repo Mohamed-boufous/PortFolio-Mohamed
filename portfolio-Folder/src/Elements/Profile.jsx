@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'; // Importez Framer Motion
-import image from "../../dist/assets/Mohamed_Boufous-BO80vEsw.jpg"; // Importez votre image
+import image from "../../public/assets/Mohamed_Boufous-BO80vEsw.jpg"; // Importez votre image
 const Profile = () => {
   return (
 <div
