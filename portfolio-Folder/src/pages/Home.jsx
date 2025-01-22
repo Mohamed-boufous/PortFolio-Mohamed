@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useContext } from "react"; // Ajoutez useContext
+import { motion, AnimatePresence } from "framer-motion";
 import BlurText from "../BlurText/BlurText";
 import TrueFocus from '../TrueFocus/TrueFocus';
 import Profile from '../Elements/Profile';
+import { LanguageContext } from "../LanguageContext"; // Importez le contexte
 
 const handleAnimationComplete = () => {
   console.log('Animation completed!');
@@ -10,6 +11,7 @@ const handleAnimationComplete = () => {
 
 const Home = () => {
   const [isDownloaded, setIsDownloaded] = useState(false);
+  const { language } = useContext(LanguageContext); // Utilisez le contexte pour obtenir la langue
 
   const handleDownload = () => {
     setIsDownloaded(true);
@@ -27,7 +29,7 @@ const Home = () => {
         {/* Centrer uniquement sur les écrans mobiles */}
         <div className="flex justify-center md:justify-start">
           <BlurText
-            text="Welcome To My Portfolio"
+            text={language === "en" ? "Welcome To My Portfolio" : "Bienvenue sur mon portfolio"} // Texte conditionnel
             delay={200}
             animateBy="words"
             direction="top"
@@ -37,7 +39,7 @@ const Home = () => {
         </div>
 
         <h1 className='text-2xl md:text-[2rem] font-bold mb-4'>
-          My name is{' '}
+          {language === "en" ? "My name is" : "Je m'appelle"}{' '}
           <span className='inline-block'>
             <TrueFocus
               sentence="Mohamed Boufous"
@@ -51,8 +53,17 @@ const Home = () => {
         </h1>
 
         <p className='text-lg md:text-xl text-gray-700 leading-7 mb-6'>
-          <span className='block'>I'm a student in AI and Big Data Engineering.</span>
-          <span className='block'>I'm interested in web development, AI, and Big Data.</span>
+          {language === "en" ? (
+            <>
+              <span className='block'>I'm a student in AI and Big Data Engineering.</span>
+              <span className='block'>I'm interested in web development, AI, and Big Data.</span>
+            </>
+          ) : (
+            <>
+              <span className='block'>Je suis étudiant en ingénierie de l'IA et du Big Data.</span>
+              <span className='block'>Je suis intéressé par le développement web, l'IA et le Big Data.</span>
+            </>
+          )}
         </p>
 
         {/* Bouton de téléchargement avec animation */}
@@ -67,7 +78,7 @@ const Home = () => {
             whileTap={{ scale: 0.95 }} // Animation au clic
             className="bg-purple-700 text-white font-semibold py-2 px-6 rounded-lg hover:bg-purple-800 transition-colors duration-300"
           >
-            Download CV
+            {language === "en" ? "Download CV" : "Télécharger CV"} {/* Texte conditionnel */}
           </motion.a>
 
           {/* Animation de succès après le téléchargement */}
@@ -94,7 +105,9 @@ const Home = () => {
                     d="M5 13l4 4L19 7"
                   />
                 </svg>
-                <span className="ml-2 text-green-600 font-semibold">Downloaded</span>
+                <span className="ml-2 text-green-600 font-semibold">
+                  {language === "en" ? "Downloaded" : "Téléchargé"} {/* Texte conditionnel */}
+                </span>
               </motion.div>
             )}
           </AnimatePresence>

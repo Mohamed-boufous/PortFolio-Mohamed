@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import logo from "./assets/logo.png";
 import Button1 from "./Button1";
+import { LanguageContext } from "./LanguageContext"; // Importez le contexte
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false); // État pour le mode sombre
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { language, toggleLanguage } = useContext(LanguageContext); // Utilisez le contexte
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -52,6 +54,14 @@ export default function Header() {
               onClick={goToHome}
             />
           </div>
+
+          {/* Bouton de traduction */}
+          <button
+            onClick={toggleLanguage}
+            className="absolute top-4 right-32 p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
+          >
+            {language === "en" ? "🇫🇷" : "🇬🇧"}
+          </button>
 
           {/* Bouton de dark mode */}
           <button
@@ -146,36 +156,36 @@ export default function Header() {
               <Button1
                 to="/"
                 isActive={activeButton === "/"}
-                className="text-gray-900 dark:text-white"
+                className={`text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
               >
-                Home
+                {language === "en" ? "Home" : "Accueil"}
               </Button1>
 
               {/* Bouton Skills */}
               <Button1
                 to="/skills"
                 isActive={activeButton === "/skills"}
-                className="text-gray-900 dark:text-white"
+                className={`text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
               >
-                Skills
+                {language === "en" ? "Skills" : "Compétences"}
               </Button1>
 
               {/* Bouton About me */}
               <Button1
                 to="/aboutme"
                 isActive={activeButton === "/aboutme"}
-                className="text-gray-900 dark:text-white"
+                className={`text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
               >
-                About me
+                {language === "en" ? "About me" : "À propos"}
               </Button1>
 
               {/* Bouton Contact me */}
               <Button1
                 to="/contactme"
                 isActive={activeButton === "/contactme"}
-                className="text-gray-900 dark:text-white"
+                className={`text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
               >
-                Contact me
+                {language === "en" ? "Contact me" : "Contactez-moi"}
               </Button1>
             </div>
           </div>
@@ -190,36 +200,36 @@ export default function Header() {
             <Button1
               to="/"
               isActive={activeButton === "/"}
-              className="w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto text-gray-900 dark:text-white"
+              className={`w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
             >
-              Home
+              {language === "en" ? "Home" : "Accueil"}
             </Button1>
 
             {/* Bouton Skills */}
             <Button1
               to="/skills"
               isActive={activeButton === "/skills"}
-              className="w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto text-gray-900 dark:text-white"
+              className={`w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
             >
-              Skills
+              {language === "en" ? "Skills" : "Compétences"}
             </Button1>
 
             {/* Bouton About me */}
             <Button1
               to="/aboutme"
               isActive={activeButton === "/aboutme"}
-              className="w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto text-gray-900 dark:text-white"
+              className={`w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
             >
-              About me
+              {language === "en" ? "About me" : "À propos"}
             </Button1>
 
             {/* Bouton Contact me */}
             <Button1
               to="/contactme"
               isActive={activeButton === "/contactme"}
-              className="w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto text-gray-900 dark:text-white"
+              className={`w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
             >
-              Contact me
+              {language === "en" ? "Contact me" : "Contactez-moi"}
             </Button1>
           </div>
         </div>

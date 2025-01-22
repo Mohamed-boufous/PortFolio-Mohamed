@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react"; // Ajoutez useContext
 import { motion, AnimatePresence } from "framer-motion";
 import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa"; // Icônes sociaux
+import { LanguageContext } from "../LanguageContext"; // Importez le contexte
 
 const ContactCard = () => {
   const [name, setName] = useState("");
@@ -8,12 +9,45 @@ const ContactCard = () => {
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { language } = useContext(LanguageContext); // Utilisez le contexte pour obtenir la langue
+
+  // Textes traduits
+  const texts = {
+    en: {
+      contactMe: "Contact Me",
+      yourName: "Your Name",
+      yourEmail: "Your Email",
+      yourMessage: "Your Message",
+      namePlaceholder: "Enter your name",
+      emailPlaceholder: "Enter your email",
+      messagePlaceholder: "Enter your message",
+      sendMessage: "Send Message",
+      nameError: "Name is required",
+      emailError: "Email is required",
+      messageError: "Message is required",
+      successMessage: "Message sent successfully!",
+    },
+    fr: {
+      contactMe: "Contactez-moi",
+      yourName: "Votre nom",
+      yourEmail: "Votre email",
+      yourMessage: "Votre message",
+      namePlaceholder: "Entrez votre nom",
+      emailPlaceholder: "Entrez votre email",
+      messagePlaceholder: "Entrez votre message",
+      sendMessage: "Envoyer le message",
+      nameError: "Le nom est requis",
+      emailError: "L'email est requis",
+      messageError: "Le message est requis",
+      successMessage: "Message envoyé avec succès !",
+    },
+  };
 
   const validateForm = () => {
     const newErrors = {};
-    if (!name) newErrors.name = "Name is required";
-    if (!email) newErrors.email = "Email is required";
-    if (!message) newErrors.message = "Message is required";
+    if (!name) newErrors.name = texts[language].nameError;
+    if (!email) newErrors.email = texts[language].emailError;
+    if (!message) newErrors.message = texts[language].messageError;
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -53,17 +87,17 @@ const ContactCard = () => {
           transition={{ type: "spring", stiffness: 100, damping: 10 }} // Transition plus fluide
         >
           <h2 className="text-2xl font-semibold text-purple-800 mb-4">
-            Contact Me
+            {texts[language].contactMe} {/* Texte conditionnel */}
           </h2>
           <form onSubmit={handleSubmit}>
             {/* Champ Nom */}
             <div className="mb-4">
               <label className="block text-purple-800 mb-1" htmlFor="name">
-                Your Name
+                {texts[language].yourName} {/* Texte conditionnel */}
               </label>
               <input
                 className="w-full px-4 py-2 bg-purple-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-300 transition duration-300"
-                placeholder="Enter your name"
+                placeholder={texts[language].namePlaceholder} 
                 type="text"
                 id="name"
                 value={name}
@@ -77,11 +111,11 @@ const ContactCard = () => {
             {/* Champ Email */}
             <div className="mb-4">
               <label className="block text-purple-800 mb-1" htmlFor="email">
-                Your Email
+                {texts[language].yourEmail} {/* Texte conditionnel */}
               </label>
               <input
                 className="w-full px-4 py-2 bg-purple-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-300 transition duration-300"
-                placeholder="Enter your email"
+                placeholder={texts[language].emailPlaceholder} 
                 type="email"
                 id="email"
                 value={email}
@@ -95,12 +129,12 @@ const ContactCard = () => {
             {/* Champ Message */}
             <div className="mb-4">
               <label className="block text-purple-800 mb-1" htmlFor="message">
-                Your Message
+                {texts[language].yourMessage} {/* Texte conditionnel */}
               </label>
               <textarea
                 className="w-full px-4 py-2 bg-purple-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-300 transition duration-300"
                 rows="4"
-                placeholder="Enter your message"
+                placeholder={texts[language].messagePlaceholder} 
                 id="message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
@@ -117,7 +151,7 @@ const ContactCard = () => {
               whileTap={{ scale: 0.95 }}
               type="submit"
             >
-              Send Message
+              {texts[language].sendMessage} {/* Texte conditionnel */}
             </motion.button>
           </form>
 
@@ -168,7 +202,7 @@ const ContactCard = () => {
               exit={{ opacity: 0, scale: 0.5 }}
               transition={{ duration: 0.3 }}
             >
-              Message sent successfully!
+              {texts[language].successMessage} {/* Texte conditionnel */}
             </motion.div>
           )}
         </AnimatePresence>
