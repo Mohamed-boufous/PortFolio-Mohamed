@@ -1,13 +1,12 @@
-// App.js
+import React from 'react'; // Ajoutez cette ligne si ce n'est pas déjà fait
 import "./App.css";
-import Header from "./Header";
-import "./index.css";
+import Header from "./Header"; // Assurez-vous que ce chemin est correct
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Skills from "./pages/Skills";
-import Aboutme from "./pages/Aboutme";
-import Contactme from "./pages/Contactme";
-import { DarkModeProvider } from "./DarkModeContext"; // Importez le contexte
+import Home from "./pages/Home"; // Assurez-vous que ce chemin est correct
+import Skills from "./pages/Skills"; // Assurez-vous que ce chemin est correct
+import Aboutme from "./pages/Aboutme"; // Assurez-vous que ce chemin est correct
+import Contactme from "./pages/Contactme"; // Assurez-vous que ce chemin est correct
+import { DarkModeProvider } from "./DarkModeContext"; // Assurez-vous que ce chemin est correct
 
 export default function App() {
   return (
