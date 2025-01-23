@@ -1,8 +1,10 @@
-// DarkModeContext.js
+// DarkModeContext.jsx
 import React, { createContext, useContext, useState, useEffect } from "react";
 
+// Créez le contexte
 const DarkModeContext = createContext();
 
+// Créez le fournisseur de contexte
 export const DarkModeProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -33,4 +35,8 @@ export const DarkModeProvider = ({ children }) => {
   );
 };
 
+// Créez un hook personnalisé pour utiliser le contexte
 export const useDarkMode = () => useContext(DarkModeContext);
+
+// Exportez le contexte lui-même (optionnel, mais utile si vous en avez besoin ailleurs)
+export { DarkModeContext };

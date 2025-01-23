@@ -1,33 +1,42 @@
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "../components/ui/3d-card";
-import { BorderBeam } from "../components/ui/border-beam"; // Importez le composant BorderBeam
-
+import { BorderBeam } from "../components/ui/border-beam";
+import { useDarkMode } from "../DarkModeContext"; // Importez useDarkMode
 
 export function SchoolCard({ schoolName, from, to, imageUrl, link }) {
+  const { isDarkMode } = useDarkMode(); // Utilisez useDarkMode
+
   return (
     <CardContainer className="inter-var">
-      <CardBody className="bg-white relative group/card hover:shadow-2xl hover:shadow-purple-500/[0.1] border-purple-500/[0.2] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
-        {/* Ajoutez le BorderBeam ici */}
+      <CardBody
+        className={`relative group/card hover:shadow-2xl hover:shadow-purple-500/[0.1] border-purple-500/[0.2] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border ${
+          isDarkMode ? "bg-gray-800 text-white" : "bg-white text-purple-800"
+        }`}
+      >
         <BorderBeam
-          size={300} // Taille de la bordure
-          duration={10} // Durée de l'animation
-          anchor={90} // Point d'ancrage de l'animation
-          borderWidth={2} // Largeur de la bordure
-          colorFrom="#ffaa40" // Couleur de départ du dégradé
-          colorTo="#9c40ff" // Couleur d'arrivée du dégradé
-          delay={0} // Délai avant le début de l'animation
-          className="rounded-[inherit]" // Appliquez les mêmes bordures arrondies que la carte
+          size={300}
+          duration={10}
+          anchor={90}
+          borderWidth={2}
+          colorFrom="#ffaa40"
+          colorTo="#9c40ff"
+          delay={0}
+          className="rounded-[inherit]"
         />
         <CardItem
           translateZ="50"
-          className="text-xl font-bold text-purple-800"
+          className={`text-xl font-bold ${
+            isDarkMode ? "text-white" : "text-purple-800"
+          }`}
         >
           {schoolName}
         </CardItem>
         <CardItem
           as="p"
           translateZ="60"
-          className="text-purple-600 text-sm max-w-sm mt-2"
+          className={`text-sm max-w-sm mt-2 ${
+            isDarkMode ? "text-gray-300" : "text-purple-600"
+          }`}
         >
           From {from} to {to}
         </CardItem>

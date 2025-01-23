@@ -1,38 +1,19 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import logo from "./assets/logo.png";
 import Button1 from "./Button1";
 import { LanguageContext } from "./LanguageContext"; // Importez le contexte
+import { useDarkMode } from "./DarkModeContext"; // Importez le contexte du mode sombre
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const { language, toggleLanguage } = useContext(LanguageContext); // Utilisez le contexte
+  const { isDarkMode, toggleDarkMode } = useDarkMode(); // Utilisez le contexte du mode sombre
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Charger le mode sombre depuis localStorage au démarrage
-  useEffect(() => {
-    const savedDarkMode = localStorage.getItem("darkMode") === "true";
-    setIsDarkMode(savedDarkMode);
-  }, []);
-
-  // Appliquer le mode sombre au document
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-    localStorage.setItem("darkMode", isDarkMode);
-  }, [isDarkMode]);
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
   };
 
   const activeButton = location.pathname;
@@ -156,7 +137,7 @@ export default function Header() {
               <Button1
                 to="/"
                 isActive={activeButton === "/"}
-                className={`text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
+                className={`text-gray-900 dark:text-white ${language === "fr" ? "text-xs" : ""}`} // Ajoutez une classe conditionnelle pour le français
               >
                 {language === "en" ? "Home" : "Accueil"}
               </Button1>
@@ -195,12 +176,12 @@ export default function Header() {
       {/* Menu mobile */}
       {isMenuOpen && (
         <div className="sm:hidden" id="mobile-menu">
-          <div className="flex flex-col items-center gap-2 px-4 pb-3 pt-2 overflow-hidden transition-all duration-300 ease-in-out">
+          <div className="flex flex-col items-center gap-2 px-4 pb-3 pt-2 overflow-hidden transition-all duration-300 ease-in-out bg-white dark:bg-gray-900">
             {/* Bouton Home */}
             <Button1
               to="/"
               isActive={activeButton === "/"}
-              className={`w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
+              className={`w-full px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
             >
               {language === "en" ? "Home" : "Accueil"}
             </Button1>
@@ -209,7 +190,7 @@ export default function Header() {
             <Button1
               to="/skills"
               isActive={activeButton === "/skills"}
-              className={`w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
+              className={`w-full px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
             >
               {language === "en" ? "Skills" : "Compétences"}
             </Button1>
@@ -218,7 +199,7 @@ export default function Header() {
             <Button1
               to="/aboutme"
               isActive={activeButton === "/aboutme"}
-              className={`w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
+              className={`w-full px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
             >
               {language === "en" ? "About me" : "À propos"}
             </Button1>
@@ -227,7 +208,7 @@ export default function Header() {
             <Button1
               to="/contactme"
               isActive={activeButton === "/contactme"}
-              className={`w-fit px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 mx-auto text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
+              className={`w-full px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
             >
               {language === "en" ? "Contact me" : "Contactez-moi"}
             </Button1>

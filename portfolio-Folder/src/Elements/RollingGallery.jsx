@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, useMotionValue, useAnimation, useTransform } from "framer-motion";
+import { useDarkMode } from "../DarkModeContext"; // Importez le contexte du mode sombre
 
 const RollingGallery = ({
   autoplay = false,
@@ -7,6 +8,7 @@ const RollingGallery = ({
   icons = [],
 }) => {
   const [isScreenSizeSm, setIsScreenSizeSm] = useState(false);
+  const { isDarkMode } = useDarkMode(); // Utilisez le contexte pour obtenir l'état du mode sombre
 
   useEffect(() => {
     // Vérifier si window est défini (pour éviter les erreurs SSR)
@@ -117,11 +119,17 @@ const RollingGallery = ({
             >
               {/* Icône de la technologie */}
               <Icon
-                className="pointer-events-none h-[60px] w-[60px] sm:h-[80px] sm:w-[80px] text-black transition-transform duration-300 ease-out group-hover:scale-105"
+                className={`pointer-events-none h-[60px] w-[60px] sm:h-[80px] sm:w-[80px] transition-transform duration-300 ease-out group-hover:scale-105 ${
+                  isDarkMode ? "text-white" : "text-black"
+                }`} // Couleur conditionnelle
               />
 
               {/* Nom de la technologie (affiché au survol) */}
-              <span className="mt-2 text-xs sm:text-sm font-medium text-black opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span
+                className={`mt-2 text-xs sm:text-sm font-medium transition-opacity duration-300 group-hover:opacity-100 ${
+                  isDarkMode ? "text-white" : "text-black"
+                }`} // Couleur conditionnelle
+              >
                 {name}
               </span>
             </div>
