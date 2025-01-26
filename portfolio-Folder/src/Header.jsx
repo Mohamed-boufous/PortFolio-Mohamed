@@ -1,14 +1,15 @@
 import React, { useState, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion"; // Importez framer-motion
 import logo from "./assets/logo.png";
 import Button1 from "./Button1";
-import { LanguageContext } from "./LanguageContext"; // Importez le contexte
-import { useDarkMode } from "./DarkModeContext"; // Importez le contexte du mode sombre
+import { LanguageContext } from "./LanguageContext"; // Contexte de langue
+import { useDarkMode } from "./DarkModeContext"; // Contexte de mode sombre
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { language, toggleLanguage } = useContext(LanguageContext); // Utilisez le contexte
-  const { isDarkMode, toggleDarkMode } = useDarkMode(); // Utilisez le contexte du mode sombre
+  const { language, toggleLanguage } = useContext(LanguageContext); // Contexte de langue
+  const { isDarkMode, toggleDarkMode } = useDarkMode(); // Contexte de mode sombre
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -28,7 +29,9 @@ export default function Header() {
         <div className="relative flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0 w-[20%]">
-            <img
+            <motion.img
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               className="h-60 w-auto cursor-pointer"
               src={logo}
               alt="Your Company"
@@ -36,17 +39,21 @@ export default function Header() {
             />
           </div>
 
-          {/* Bouton de traduction */}
-          <button
+          {/* Bouton de traduction avec animation */}
+          <motion.button
             onClick={toggleLanguage}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             className="absolute top-4 right-32 p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
           >
             {language === "en" ? "🇫🇷" : "🇬🇧"}
-          </button>
+          </motion.button>
 
-          {/* Bouton de dark mode */}
-          <button
+          {/* Bouton de dark mode avec animation */}
+          <motion.button
             onClick={toggleDarkMode}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             className="absolute top-4 right-16 p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
           >
             {isDarkMode ? (
@@ -80,12 +87,14 @@ export default function Header() {
                 />
               </svg>
             )}
-          </button>
+          </motion.button>
 
           {/* Bouton du menu mobile */}
           <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
-            <button
+            <motion.button
               type="button"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
               className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:text-purple-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-controls="mobile-menu"
               aria-expanded={isMenuOpen}
@@ -127,7 +136,7 @@ export default function Header() {
                   />
                 </svg>
               )}
-            </button>
+            </motion.button>
           </div>
 
           {/* Menu desktop */}
@@ -137,7 +146,7 @@ export default function Header() {
               <Button1
                 to="/"
                 isActive={activeButton === "/"}
-                className={`text-gray-900 dark:text-white ${language === "fr" ? "text-xs" : ""}`} // Ajoutez une classe conditionnelle pour le français
+                className={`text-gray-900 dark:text-white ${language === "fr" ? "text-xs" : ""}`}
               >
                 {language === "en" ? "Home" : "Accueil"}
               </Button1>
@@ -146,7 +155,7 @@ export default function Header() {
               <Button1
                 to="/skills"
                 isActive={activeButton === "/skills"}
-                className={`text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
+                className={`text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
               >
                 {language === "en" ? "Skills" : "Compétences"}
               </Button1>
@@ -155,7 +164,7 @@ export default function Header() {
               <Button1
                 to="/aboutme"
                 isActive={activeButton === "/aboutme"}
-                className={`text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
+                className={`text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
               >
                 {language === "en" ? "About me" : "À propos"}
               </Button1>
@@ -164,7 +173,7 @@ export default function Header() {
               <Button1
                 to="/contactme"
                 isActive={activeButton === "/contactme"}
-                className={`text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
+                className={`text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
               >
                 {language === "en" ? "Contact me" : "Contactez-moi"}
               </Button1>
@@ -175,13 +184,19 @@ export default function Header() {
 
       {/* Menu mobile */}
       {isMenuOpen && (
-        <div className="sm:hidden" id="mobile-menu">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="sm:hidden"
+          id="mobile-menu"
+        >
           <div className="flex flex-col items-center gap-2 px-4 pb-3 pt-2 overflow-hidden transition-all duration-300 ease-in-out bg-white dark:bg-gray-900">
             {/* Bouton Home */}
             <Button1
               to="/"
               isActive={activeButton === "/"}
-              className={`w-full px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
+              className={`w-full px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
             >
               {language === "en" ? "Home" : "Accueil"}
             </Button1>
@@ -190,7 +205,7 @@ export default function Header() {
             <Button1
               to="/skills"
               isActive={activeButton === "/skills"}
-              className={`w-full px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
+              className={`w-full px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
             >
               {language === "en" ? "Skills" : "Compétences"}
             </Button1>
@@ -199,7 +214,7 @@ export default function Header() {
             <Button1
               to="/aboutme"
               isActive={activeButton === "/aboutme"}
-              className={`w-full px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
+              className={`w-full px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
             >
               {language === "en" ? "About me" : "À propos"}
             </Button1>
@@ -208,12 +223,12 @@ export default function Header() {
             <Button1
               to="/contactme"
               isActive={activeButton === "/contactme"}
-              className={`w-full px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`} // Ajoutez une classe conditionnelle pour le français
+              className={`w-full px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
             >
               {language === "en" ? "Contact me" : "Contactez-moi"}
             </Button1>
           </div>
-        </div>
+        </motion.div>
       )}
     </nav>
   );

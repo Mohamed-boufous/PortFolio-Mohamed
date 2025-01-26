@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useContext } from "react"; // Ajoutez useContext
+import React, { useState, useEffect, useContext } from "react"; // Assurez-vous que useEffect est importé
 import { motion, AnimatePresence } from "framer-motion";
-import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa"; // Icônes sociaux
-import { LanguageContext } from "../LanguageContext"; // Importez le contexte
+import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { LanguageContext } from "../LanguageContext";
+import { DarkModeContext } from "../DarkModeContext";
 
 const ContactCard = () => {
   const [name, setName] = useState("");
@@ -9,7 +10,8 @@ const ContactCard = () => {
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const { language } = useContext(LanguageContext); // Utilisez le contexte pour obtenir la langue
+  const { language } = useContext(LanguageContext);
+  const { isDarkMode } = useContext(DarkModeContext);
 
   // Textes traduits
   const texts = {
@@ -55,7 +57,6 @@ const ContactCard = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      // Simuler l'envoi du formulaire
       setTimeout(() => {
         setIsSubmitted(true);
         setName("");
@@ -66,102 +67,110 @@ const ContactCard = () => {
     }
   };
 
-  // Disparition de l'animation de succès après 3 secondes
+  // Utilisation de useEffect pour gérer la disparition du message de succès
   useEffect(() => {
     if (isSubmitted) {
       const timer = setTimeout(() => {
         setIsSubmitted(false);
-      }, 3000); // Disparaît après 3 secondes
+      }, 3000);
       return () => clearTimeout(timer);
     }
   }, [isSubmitted]);
 
+  // Styles conditionnels pour le mode sombre
+  const cardClasses = `max-w-md mx-auto px-8 py-6 rounded-lg shadow-lg border ${
+    isDarkMode
+      ? "bg-gray-800 border-gray-700 text-white"
+      : "bg-white border-purple-200 text-purple-800"
+  }`;
+
+  const inputClasses = `w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 transition duration-300 ${
+    isDarkMode
+      ? "bg-gray-700 text-white focus:ring-purple-500"
+      : "bg-purple-50 focus:ring-purple-300"
+  }`;
+
+  const buttonClasses = `w-full py-2 px-4 rounded-lg transition duration-300 ${
+    isDarkMode
+      ? "bg-purple-700 hover:bg-purple-600 text-white"
+      : "bg-purple-600 hover:bg-purple-700 text-white"
+  }`;
+
+  const iconClasses = `transition-colors duration-300 ${
+    isDarkMode ? "text-purple-400 hover:text-purple-300" : "text-purple-600 hover:text-purple-800"
+  }`;
+
   return (
     <div className="container px-4 mx-auto mt-16">
-      {/* Espace en haut */}
       <div className="mx-auto">
-        {/* Carte de contact */}
         <motion.div
-          className="max-w-md mx-auto px-8 py-6 bg-white rounded-lg shadow-lg border border-purple-200"
-          whileHover={{ scale: 1.02, rotate: 0 }} // Animation plus douce
-          transition={{ type: "spring", stiffness: 100, damping: 10 }} // Transition plus fluide
+          className={cardClasses}
+          whileHover={{ scale: 1.02, rotate: 0 }}
+          transition={{ type: "spring", stiffness: 100, damping: 10 }}
         >
-          <h2 className="text-2xl font-semibold text-purple-800 mb-4">
-            {texts[language].contactMe} {/* Texte conditionnel */}
-          </h2>
+          <h2 className="text-2xl font-semibold mb-4">{texts[language].contactMe}</h2>
           <form onSubmit={handleSubmit}>
-            {/* Champ Nom */}
             <div className="mb-4">
-              <label className="block text-purple-800 mb-1" htmlFor="name">
-                {texts[language].yourName} {/* Texte conditionnel */}
+              <label className="block mb-1" htmlFor="name">
+                {texts[language].yourName}
               </label>
               <input
-                className="w-full px-4 py-2 bg-purple-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-300 transition duration-300"
-                placeholder={texts[language].namePlaceholder} 
+                className={inputClasses}
+                placeholder={texts[language].namePlaceholder}
                 type="text"
                 id="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
-              {errors.name && (
-                <p className="text-red-500 text-sm mt-1">{errors.name}</p>
-              )}
+              {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
             </div>
 
-            {/* Champ Email */}
             <div className="mb-4">
-              <label className="block text-purple-800 mb-1" htmlFor="email">
-                {texts[language].yourEmail} {/* Texte conditionnel */}
+              <label className="block mb-1" htmlFor="email">
+                {texts[language].yourEmail}
               </label>
               <input
-                className="w-full px-4 py-2 bg-purple-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-300 transition duration-300"
-                placeholder={texts[language].emailPlaceholder} 
+                className={inputClasses}
+                placeholder={texts[language].emailPlaceholder}
                 type="email"
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              {errors.email && (
-                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-              )}
+              {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
             </div>
 
-            {/* Champ Message */}
             <div className="mb-4">
-              <label className="block text-purple-800 mb-1" htmlFor="message">
-                {texts[language].yourMessage} {/* Texte conditionnel */}
+              <label className="block mb-1" htmlFor="message">
+                {texts[language].yourMessage}
               </label>
               <textarea
-                className="w-full px-4 py-2 bg-purple-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-300 transition duration-300"
+                className={inputClasses}
                 rows="4"
-                placeholder={texts[language].messagePlaceholder} 
+                placeholder={texts[language].messagePlaceholder}
                 id="message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
               ></textarea>
-              {errors.message && (
-                <p className="text-red-500 text-sm mt-1">{errors.message}</p>
-              )}
+              {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
             </div>
 
-            {/* Bouton Envoyer */}
             <motion.button
-              className="w-full bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition duration-300"
+              className={buttonClasses}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               type="submit"
             >
-              {texts[language].sendMessage} {/* Texte conditionnel */}
+              {texts[language].sendMessage}
             </motion.button>
           </form>
 
-          {/* Icônes des réseaux sociaux */}
           <div className="flex justify-center space-x-6 mt-6">
             <motion.a
               href="#"
               whileHover={{ scale: 1.2, rotate: 15 }}
               whileTap={{ scale: 0.9 }}
-              className="text-purple-600 hover:text-purple-800 transition-colors duration-300"
+              className={iconClasses}
             >
               <FaFacebook className="w-8 h-8" />
             </motion.a>
@@ -169,15 +178,15 @@ const ContactCard = () => {
               href="#"
               whileHover={{ scale: 1.2, rotate: 15 }}
               whileTap={{ scale: 0.9 }}
-              className="text-purple-600 hover:text-purple-800 transition-colors duration-300"
+              className={iconClasses}
             >
-              <FaGithub className="w-8 h-8" /> {/* Icône GitHub */}
+              <FaGithub className="w-8 h-8" />
             </motion.a>
             <motion.a
               href="#"
               whileHover={{ scale: 1.2, rotate: 15 }}
               whileTap={{ scale: 0.9 }}
-              className="text-purple-600 hover:text-purple-800 transition-colors duration-300"
+              className={iconClasses}
             >
               <FaInstagram className="w-8 h-8" />
             </motion.a>
@@ -185,14 +194,13 @@ const ContactCard = () => {
               href="#"
               whileHover={{ scale: 1.2, rotate: 15 }}
               whileTap={{ scale: 0.9 }}
-              className="text-purple-600 hover:text-purple-800 transition-colors duration-300"
+              className={iconClasses}
             >
               <FaLinkedin className="w-8 h-8" />
             </motion.a>
           </div>
         </motion.div>
 
-        {/* Animation de succès */}
         <AnimatePresence>
           {isSubmitted && (
             <motion.div
@@ -202,7 +210,7 @@ const ContactCard = () => {
               exit={{ opacity: 0, scale: 0.5 }}
               transition={{ duration: 0.3 }}
             >
-              {texts[language].successMessage} {/* Texte conditionnel */}
+              {texts[language].successMessage}
             </motion.div>
           )}
         </AnimatePresence>
