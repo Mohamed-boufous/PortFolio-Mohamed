@@ -1,7 +1,10 @@
-import React from 'react'
+import {React,useContext} from 'react'
 import { motion } from 'framer-motion'; // Importez Framer Motion
 import image from "../assets/Mohamed_Boufous.jpg"; // Importez votre image
+import { DarkModeContext } from "../DarkModeContext";
+
 const Profile = () => {
+  const { isDarkMode } = useContext(DarkModeContext);
   return (
 <div
         style={{
@@ -25,7 +28,7 @@ const Profile = () => {
             width: "100%",
             height: "100%",
             borderRadius: "50%", // Forme circulaire
-            border: "2px dashed purple", // Bordure fine et cassée (dashed)
+            border: `2px dashed ${isDarkMode ? "white"  :  "purple" }`, // Bordure fine et cassée (dashed)
             boxShadow: "0 0 0 4px white", // Bordure blanche à l'extérieur
             strokeDasharray: "24 10", // Espace entre les tirets
           }}
