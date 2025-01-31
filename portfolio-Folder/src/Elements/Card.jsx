@@ -1,8 +1,8 @@
-import React, { useContext } from "react"; // Ajoutez useContext
+import React, { useContext } from "react";
 import { motion } from 'framer-motion';
 import { BsArrowDownRight } from 'react-icons/bs';
 import CountUp from './Countup';
-import { LanguageContext } from "../LanguageContext"; // Importez le contexte
+import { LanguageContext } from "../LanguageContext";
 
 // Liste des services en anglais et en français
 const services = {
@@ -61,7 +61,7 @@ const services = {
 };
 
 const Card = () => {
-  const { language } = useContext(LanguageContext); // Utilisez le contexte pour obtenir la langue
+  const { language } = useContext(LanguageContext);
 
   return (
     <section className="flex items-center justify-center mt-[1rem]">
@@ -70,13 +70,13 @@ const Card = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.4, ease: "easeIn" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6" // Toujours 2 colonnes à partir de md
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
-          {services[language].map((service, index) => ( // Utilisez services[language] pour les textes traduits
+          {services[language].map((service, index) => (
             <motion.div
               key={index}
-              className="bg-white rounded-lg shadow-md p-4 text-center transform transition-transform hover:scale-105 group border hover:border-purple-500 w-[28rem] mx-auto" // Ajout de max-w-xs et mx-auto
-              whileHover={{ scale: 1.05 }} // Animation au survol
+              className="bg-white rounded-lg shadow-md p-4 text-center transform transition-transform hover:scale-105 group border hover:border-purple-500 w-full sm:w-[28rem] mx-auto"
+              whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               <div className="flex justify-between items-center mb-4">

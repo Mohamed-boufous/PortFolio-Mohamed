@@ -40,55 +40,10 @@ export default function Header() {
           </div>
 
           {/* Bouton de traduction avec animation */}
-          <motion.button
-            onClick={toggleLanguage}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="absolute top-4 right-32 p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
-          >
-            {language === "en" ? "🇫🇷" : "🇬🇧"}
-          </motion.button>
+        
 
           {/* Bouton de dark mode avec animation */}
-          <motion.button
-            onClick={toggleDarkMode}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="absolute top-4 right-16 p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
-          >
-            {isDarkMode ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-yellow-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                />
-              </svg>
-            ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-gray-800"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                />
-              </svg>
-            )}
-          </motion.button>
-
+          
           {/* Bouton du menu mobile */}
           <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
             <motion.button
@@ -141,49 +96,100 @@ export default function Header() {
 
           {/* Menu desktop */}
           <div className="hidden sm:ml-6 sm:block w-[80%]">
-            <div className="flex justify-center space-x-6">
-              {/* Bouton Home */}
-              <Button1
-                to="/"
-                isActive={activeButton === "/"}
-                className={`text-gray-900 dark:text-white ${language === "fr" ? "text-xs" : ""}`}
-              >
-                {language === "en" ? "Home" : "Accueil"}
-              </Button1>
+  <div className="flex justify-between items-center w-full">
+    {/* Navigation buttons */}
+    <div className="flex flex-1 justify-center space-x-6">
+    <Button1
+  to="/"
+  isActive={activeButton === "/"}
+  className="text-gray-900 dark:text-white"
+>
+  {language === "en" ? "Home" : "Accueil"}
+</Button1>
 
-              {/* Bouton Skills */}
-              <Button1
-                to="/skills"
-                isActive={activeButton === "/skills"}
-                className={`text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
-              >
-                {language === "en" ? "Skills" : "Compétences"}
-              </Button1>
+      <Button1
+        to="/skills"
+        isActive={activeButton === "/skills"}
+        className={`text-gray-900 dark:text-white ${language === "fr" ? "text-xs" : ""}`}
+      >
+        {language === "en" ? "Skills" : "Compétences"}
+      </Button1>
 
-              {/* Bouton About me */}
-              <Button1
-                to="/aboutme"
-                isActive={activeButton === "/aboutme"}
-                className={`text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
-              >
-                {language === "en" ? "About me" : "À propos"}
-              </Button1>
+      <Button1
+        to="/aboutme"
+        isActive={activeButton === "/aboutme"}
+        className={`text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
+      >
+        {language === "en" ? "About me" : "À propos"}
+      </Button1>
 
-              {/* Bouton Contact me */}
-              <Button1
-                to="/contactme"
-                isActive={activeButton === "/contactme"}
-                className={`text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
-              >
-                {language === "en" ? "Contact me" : "Contactez-moi"}
-              </Button1>
-            </div>
-          </div>
+      <Button1
+        to="/contactme"
+        isActive={activeButton === "/contactme"}
+        className={`text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
+      >
+        {language === "en" ? "Contact me" : "Contactez-moi"}
+      </Button1>
+    </div>
+
+    {/* Utility buttons */}
+    <div className="flex items-center space-x-4 ml-4">
+      <motion.button
+        onClick={toggleLanguage}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
+      >
+        {language === "en" ? "🇫🇷" : "🇬🇧"}
+      </motion.button>
+
+      <motion.button
+        onClick={toggleDarkMode}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
+      >
+        {isDarkMode ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 text-yellow-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+            />
+          </svg>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 text-gray-800"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+            />
+          </svg>
+        )}
+      </motion.button>
+    </div>
+  </div>
+</div>
         </div>
       </div>
 
       {/* Menu mobile */}
       {isMenuOpen && (
+        
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -191,6 +197,52 @@ export default function Header() {
           className="sm:hidden"
           id="mobile-menu"
         >
+               <motion.button
+            onClick={toggleDarkMode}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="absolute top-4 right-16 p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
+          >
+            {isDarkMode ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 text-yellow-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 text-gray-800"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                />
+              </svg>
+            )}
+          </motion.button>
+          <motion.button
+            onClick={toggleLanguage}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="absolute top-4 right-32 p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
+          >
+            {language === "en" ? "🇫🇷" : "🇬🇧"}
+          </motion.button>
           <div className="flex flex-col items-center gap-2 px-4 pb-3 pt-2 overflow-hidden transition-all duration-300 ease-in-out bg-white dark:bg-gray-900">
             {/* Bouton Home */}
             <Button1

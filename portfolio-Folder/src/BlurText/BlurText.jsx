@@ -83,7 +83,7 @@ const BlurText = ({
   );
 
   return (
-    <p ref={ref} className={`blur-text ${className} flex flex-wrap`}>
+    <p ref={ref} className={`blur-text ${className} inline-flex whitespace-nowrap`}>
       {springs.map((props, index) => (
         <animated.span
           key={index}

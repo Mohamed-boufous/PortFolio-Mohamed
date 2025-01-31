@@ -94,3 +94,21 @@ body {
     margin-left: 10px; /* Espace entre les boutons et le menu */
   }
 }
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .header-buttons {
+      display: flex;
+      align-items: center;
+      gap: 10px; /* Espace entre les boutons */
+  }
+
+  .language-button,
+  .dark-mode-button {
+      position: static; /* Retirez le positionnement absolu */
+      margin-left: auto; /* Pousse les boutons à droite */
+  }
+
+  .menu-button {
+      margin-left: 10px; /* Espace entre les boutons et le menu */
+  }
+}

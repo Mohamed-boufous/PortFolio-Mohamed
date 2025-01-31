@@ -167,7 +167,7 @@ const ContactCard = () => {
 
           <div className="flex justify-center space-x-6 mt-6">
             <motion.a
-              href="#"
+              href="https://www.facebook.com/profile.php?id=100022534726772"
               whileHover={{ scale: 1.2, rotate: 15 }}
               whileTap={{ scale: 0.9 }}
               className={iconClasses}
@@ -175,7 +175,7 @@ const ContactCard = () => {
               <FaFacebook className="w-8 h-8" />
             </motion.a>
             <motion.a
-              href="#"
+              href="https://github.com/Mohamed-boufous"
               whileHover={{ scale: 1.2, rotate: 15 }}
               whileTap={{ scale: 0.9 }}
               className={iconClasses}
@@ -183,7 +183,7 @@ const ContactCard = () => {
               <FaGithub className="w-8 h-8" />
             </motion.a>
             <motion.a
-              href="#"
+              href="https://www.instagram.com/mohmad_boufous?igsh=NTc0bWNmaHZkcjY4"
               whileHover={{ scale: 1.2, rotate: 15 }}
               whileTap={{ scale: 0.9 }}
               className={iconClasses}
@@ -191,7 +191,7 @@ const ContactCard = () => {
               <FaInstagram className="w-8 h-8" />
             </motion.a>
             <motion.a
-              href="#"
+              href="http://www.linkedin.com/in/mohamed-boufous-529aa026a"
               whileHover={{ scale: 1.2, rotate: 15 }}
               whileTap={{ scale: 0.9 }}
               className={iconClasses}
