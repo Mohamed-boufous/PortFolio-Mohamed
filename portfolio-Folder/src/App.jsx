@@ -1,11 +1,11 @@
 import React from 'react';
 import "./App.css";
-import Header from "./Header"; // Assurez-vous que ce chemin est correct
+import Header from "./Header"; 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home"; // Assurez-vous que ce chemin est correct
-import Skills from "./pages/Skills"; // Assurez-vous que ce chemin est correct
-import Aboutme from "./pages/Aboutme"; // Assurez-vous que ce chemin est correct
-import Contactme from "./pages/Contactme"; // Assurez-vous que ce chemin est correct
+import Home from "./pages/Home"; 
+import Skills from "./pages/Skills"; 
+import Aboutme from "./pages/Aboutme"; 
+import Contactme from "./pages/Contactme"; 
 import { DarkModeProvider } from "./DarkModeContext";
 
 export default function App() {
@@ -16,7 +16,7 @@ export default function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/skills" element={<Skills />} /> {/* Utilisez des minuscules pour les chemins */}
+            <Route path="/skills" element={<Skills />} /> 
             <Route path="/aboutme" element={<Aboutme />} />
             <Route path="/contactme" element={<Contactme />} />
           </Routes>

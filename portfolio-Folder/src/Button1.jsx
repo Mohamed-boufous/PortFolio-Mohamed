@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom"; // Importez Link depuis react-router-dom
-import { useDarkMode } from "./DarkModeContext"; // Importez le contexte du mode sombre
+import { Link } from "react-router-dom";
+import { useDarkMode } from "./DarkModeContext"; 
 
 const Button1 = ({ children, to, isActive }) => {
   const { isDarkMode } = useDarkMode(); // Correction : Ajout du contexte du mode sombre
