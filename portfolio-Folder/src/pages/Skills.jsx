@@ -9,6 +9,8 @@ import { TbBrandCpp, TbBrandHtml5 } from "react-icons/tb";
 import { SiOctave } from "react-icons/si"; // Alternative à MATLAB
 import { LanguageContext } from "../LanguageContext"; // Importez le contexte
 
+import CertificateSlider1 from "../CertificateSlider1"
+
 // Liste des icônes avec leurs noms
 const icons = [
   { icon: FaReact, name: "React" },
@@ -75,6 +77,11 @@ const Skills = () => {
           icons={icons}
         />
       </div>
+   
+    <div className="App">
+      <h1 className="text-3xl font-bold text-center my-8">My Certificates</h1>
+      <CertificateSlider1 />
+    </div>
     </div>
   );
 };
