@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import logo from "./assets/datacamp.png";
 
-import certificates from './certificates';
+import certificates from './Certif.jsx';
 
 const CertificateSlider1 = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
