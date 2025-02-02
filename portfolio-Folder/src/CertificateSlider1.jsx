@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import logo from "./assets/datacamp.png";
+
 
 import certificates from './Certif.jsx';
 
@@ -26,13 +26,13 @@ const CertificateSlider1 = () => {
     <div className="relative w-full max-w-6xl mx-auto p-4">
       {/* Navigation buttons for mobile */}
       <button
-        onClick={handlePrev}
-        className="absolute  top-0 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white p-2 rounded-full hover:bg-purple-700 focus:outline-none z-10 sm:hidden"
+        onClick={handleNext}
+        className="absolute  top-0 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white p-2 rounded-full hover:bg-purple-700 focus:outline-none z-10 sm:hidden "
       >
         &#10094;
       </button>
       <button
-        onClick={handleNext}
+        onClick={handlePrev}
         className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white p-2 rounded-full hover:bg-purple-700 focus:outline-none z-10 sm:hidden"
       >
         &#10095;
@@ -40,13 +40,13 @@ const CertificateSlider1 = () => {
 
       {/* Navigation buttons for medium and large screens */}
       <button
-        onClick={handlePrev}
+        onClick={handleNext}
         className="absolute  top-1/2 left-0 transform -translate-y-1/2 bg-purple-600 text-white p-2 rounded-full hover:bg-purple-700 focus:outline-none hidden sm:block"
       >
         &#10094;
       </button>
       <button
-        onClick={handleNext}
+        onClick={handlePrev}
         className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-purple-600 text-white p-2 rounded-full hover:bg-purple-700 focus:outline-none hidden sm:block"
       >
         &#10095;

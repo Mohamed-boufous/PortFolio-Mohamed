@@ -69,7 +69,7 @@ const Skills = () => {
         />
       </div>
 
-      {/* Section Galerie des technologies */}
+      
       <div className="w-full flex items-center justify-center px-4">
         <RollingGallery
           autoplay={true}
@@ -78,8 +78,20 @@ const Skills = () => {
         />
       </div>
    
-    <div className="App">
-      <h1 className="text-3xl font-bold text-center my-8">My Certificates</h1>
+    <div className="pb-6">
+    <div className="w-full flex justify-center ">
+        <AnimatedText
+          text={language === "en" ? "My Certificates" : "Mes certificats"} // Texte conditionnel
+          className="text-3xl md:text-5xl font-mono text-purple-500"
+          delay={150}
+          animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
+          animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
+          easing="easeOutCubic"
+          threshold={0.2}
+          rootMargin="-50px"
+          onAnimationComplete={handleAnimationComplete}
+        />
+      </div>
       <CertificateSlider1 />
     </div>
     </div>
