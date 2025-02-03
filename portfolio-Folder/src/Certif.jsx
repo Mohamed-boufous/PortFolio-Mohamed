@@ -3,8 +3,6 @@ import Data365 from "./assets/Data365.jpg";
 import sololearn from "./assets/sololearn.png"; 
 import linkdin from "./assets/LinkdeIn.png"
 
-// Importer correctement l'image
-
 const certificates = [
     {
       id: 1,
@@ -65,5 +63,6 @@ const certificates = [
       
     },
   ];
+
 
 export default certificates;
