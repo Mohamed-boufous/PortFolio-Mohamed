@@ -5,8 +5,7 @@ import CountUp from './Countup';
 import { LanguageContext } from "../LanguageContext";
 import { useDarkMode } from "../DarkModeContext";
 
-
-// Liste des services en anglais et en français
+// Liste des services en anglais et en francais
 const services = {
     en: [
         {
@@ -37,14 +36,14 @@ const services = {
     fr: [
         {
             num: "01",
-            title: "Développement Web",
-            description: "Développement de sites web en utilisant les dernières technologies.",
+            title: "Developpement Web",
+            description: "Developpement de sites web en utilisant les dernieres technologies.",
             href: "#",
         },
         {
             num: "02",
             title: "Application Desktop",
-            description: "Développement d'applications desktop en utilisant Java et JavaFX.",
+            description: "Developpement d'applications desktop en utilisant Java et JavaFX.",
             href: "#",
         },
         {
@@ -55,8 +54,8 @@ const services = {
         },
         {
             num: "04",
-            title: "Données et IA",
-            description: "Collecte et étude d'informations et d'idées sur le domaine.",
+            title: "Donnees et IA",
+            description: "Collecte et etude d'informations et d'idees sur le domaine.",
             href: "#",
         },
     ],
@@ -67,11 +66,11 @@ const Card = () => {
     const { isDarkMode } = useDarkMode();
 
     // Define dynamic class names based on dark mode
-  const cardClasses = (isDarkMode) => ({
+    const cardClasses = (isDarkMode) => ({
         background: isDarkMode ? 'bg-gray-800' : 'bg-white',
         text: isDarkMode ? 'text-white' : 'text-black',
         hover: isDarkMode ? 'hover:border-purple-500' : 'hover:border-purple-500',
-  });
+    });
     const textColor = (isDarkMode) => (isDarkMode ? "text-purple-500 group-hover:text-white" : "text-black group-hover:text-purple-500")
 
     return (
@@ -88,7 +87,7 @@ const Card = () => {
                         return (
                         <motion.div
                             key={index}
-                           className={`rounded-lg shadow-md p-4 text-center  hover:scale-105 group border  w-full sm:w-[28rem] mx-auto ${classes.background} ${classes.text} ${classes.hover}`}
+                            className={`rounded-lg shadow-md p-4 text-center hover:scale-105 group border w-full ${classes.background} ${classes.text} ${classes.hover}`}
                             whileHover={{ scale: 1.05 }}
                             transition={{ type: "spring", stiffness: 300 }}
                         >
@@ -110,10 +109,10 @@ const Card = () => {
                                     <BsArrowDownRight className="text-black group-hover:text-white text-xl" />
                                 </a>
                             </div>
-                            <h2 className={`text-2xl font-bold leading-none  mb-[4rem] ${textColor(isDarkMode)} transition-all duration-300`}>
+                            <h2 className={`text-2xl font-bold leading-none mb-[4rem] ${textColor(isDarkMode)} transition-all duration-300`}>
                                 {service.title}
                             </h2>
-                            <p className={`text-gray-600 mb-4  ${isDarkMode ? "group-hover:text-white text-gray-200": "group-hover:text-purple-500 text-gray-600"} transition-all duration-50`}>
+                            <p className={`text-gray-600 mb-4 ${isDarkMode ? "group-hover:text-white text-gray-200": "group-hover:text-purple-500 text-gray-600"} transition-all duration-50`}>
                                 {service.description}
                             </p>
                         </motion.div>
