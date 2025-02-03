@@ -1,27 +1,18 @@
 import React, { useState, useContext } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion"; // Importez framer-motion
+import { motion } from "framer-motion";
 import logo from "./assets/logo.png";
-import Button1 from "./Button1";
 import { LanguageContext } from "./LanguageContext"; // Contexte de langue
 import { useDarkMode } from "./DarkModeContext"; // Contexte de mode sombre
 
-export default function Header() {
+export default function Header({ scrollToSection }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { language, toggleLanguage } = useContext(LanguageContext); // Contexte de langue
   const { isDarkMode, toggleDarkMode } = useDarkMode(); // Contexte de mode sombre
-  const location = useLocation();
-  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const activeButton = location.pathname;
-
-  const goToHome = () => {
-    navigate("/");
-  };
 
   return (
     <nav className="bg-white dark:bg-gray-900 shadow-md">
@@ -35,15 +26,10 @@ export default function Header() {
               className="h-60 w-auto cursor-pointer"
               src={logo}
               alt="Your Company"
-              onClick={goToHome}
+              onClick={() => scrollToSection('home')}
             />
           </div>
 
-          {/* Bouton de traduction avec animation */}
-        
-
-          {/* Bouton de dark mode avec animation */}
-          
           {/* Bouton du menu mobile */}
           <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
             <motion.button
@@ -99,37 +85,54 @@ export default function Header() {
   <div className="flex justify-between items-center w-full">
     {/* Navigation buttons */}
     <div className="flex flex-1 justify-center space-x-6">
-    <Button1
-  to="/"
-  isActive={activeButton === "/"}
-  className="text-gray-900 dark:text-white"
->
-  {language === "en" ? "Home" : "Accueil"}
-</Button1>
+    <motion.button
+    onClick={() => scrollToSection('home')}
+   className="relative inline-flex items-center justify-center px-4 py-2 overflow-hidden font-bold rounded-full group border-2 transition-colors duration-200 ease-in-out  bg-white text-black border-white  hover:bg-black hover:text-white w-full sm:w-auto"
+  >
+  <span className="w-24 h-24 rotate-45 translate-x-10 -translate-y-2 absolute left-0 top-0 bg-white opacity-[3%]"></span>
+  <span className="absolute top-0 left-0 w-40 h-40 -mt-1 transition-all duration-500 ease-in-out rotate-45 -translate-x-48 -translate-y-20 bg-black opacity-100 group-hover:-translate-x-6"></span>
+  <span className="relative w-full text-center transition-colors duration-200 ease-in-out sm:text-[9px] md:text-xs ">
+      {language === "en" ? "Home" : "Accueil"}
+    </span>
+    <span className="absolute inset-0 border-2 rounded-full"></span>
+  </motion.button>
 
-      <Button1
-        to="/skills"
-        isActive={activeButton === "/skills"}
-        className={`text-gray-900 dark:text-white ${language === "fr" ? "text-xs" : ""}`}
-      >
-        {language === "en" ? "Skills" : "Compétences"}
-      </Button1>
 
-      <Button1
-        to="/aboutme"
-        isActive={activeButton === "/aboutme"}
-        className={`text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
+      <motion.button
+      onClick={() => scrollToSection('skills')}
+       className="relative inline-flex items-center justify-center px-4 py-2 overflow-hidden font-bold rounded-full group border-2 transition-colors duration-200 ease-in-out bg-white text-black border-white hover:bg-black hover:text-white w-full sm:w-auto"
       >
-        {language === "en" ? "About me" : "À propos"}
-      </Button1>
+        <span className="w-24 h-24 rotate-45 translate-x-10 -translate-y-2 absolute left-0 top-0 bg-white opacity-[3%]"></span>
+        <span className="absolute top-0 left-0 w-40 h-40 -mt-1 transition-all duration-500 ease-in-out rotate-45 -translate-x-48 -translate-y-20 bg-black opacity-100 group-hover:-translate-x-6"></span>
+        <span className="relative w-full text-center transition-colors duration-200 ease-in-out sm:text-[9px] md:text-xs ">
+          {language === "en" ? "Skills" : "Compétences"}
+        </span>
+        <span className="absolute inset-0 border-2 rounded-full"></span>
+      </motion.button>
 
-      <Button1
-        to="/contactme"
-        isActive={activeButton === "/contactme"}
-        className={`text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
+      <motion.button
+       onClick={() => scrollToSection('aboutme')}
+       className="relative inline-flex items-center justify-center px-4 py-2 overflow-hidden font-bold rounded-full group border-2 transition-colors duration-200 ease-in-out bg-white text-black border-white hover:bg-black hover:text-white w-full sm:w-auto"
       >
-        {language === "en" ? "Contact me" : "Contactez-moi"}
-      </Button1>
+        <span className="w-24 h-24 rotate-45 translate-x-10 -translate-y-2 absolute left-0 top-0 bg-white opacity-[3%]"></span>
+        <span className="absolute top-0 left-0 w-40 h-40 -mt-1 transition-all duration-500 ease-in-out rotate-45 -translate-x-48 -translate-y-20 bg-black opacity-100 group-hover:-translate-x-6"></span>
+        <span className="relative w-full text-center transition-colors duration-200 ease-in-out sm:text-[9px] md:text-xs ">
+          {language === "en" ? "About me" : "À propos"}
+        </span>
+        <span className="absolute inset-0 border-2 rounded-full"></span>
+      </motion.button>
+
+      <motion.button
+       onClick={() => scrollToSection('contactme')}
+       className="relative inline-flex items-center justify-center px-4 py-2 overflow-hidden font-bold rounded-full group border-2 transition-colors duration-200 ease-in-out bg-white text-black border-white hover:bg-black hover:text-white w-full sm:w-auto"
+      >
+        <span className="w-24 h-24 rotate-45 translate-x-10 -translate-y-2 absolute left-0 top-0 bg-white opacity-[3%]"></span>
+        <span className="absolute top-0 left-0 w-40 h-40 -mt-1 transition-all duration-500 ease-in-out rotate-45 -translate-x-48 -translate-y-20 bg-black opacity-100 group-hover:-translate-x-6"></span>
+        <span className="relative w-full text-center transition-colors duration-200 ease-in-out sm:text-[9px] md:text-xs ">
+          {language === "en" ? "Contact me" : "Contactez-moi"}
+        </span>
+        <span className="absolute inset-0 border-2 rounded-full"></span>
+      </motion.button>
     </div>
 
     {/* Utility buttons */}
@@ -245,40 +248,56 @@ export default function Header() {
           </motion.button>
           <div className="flex flex-col items-center gap-2 px-4 pb-3 pt-2 overflow-hidden transition-all duration-300 ease-in-out bg-white dark:bg-gray-900">
             {/* Bouton Home */}
-            <Button1
-              to="/"
-              isActive={activeButton === "/"}
-              className={`w-full px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
-            >
-              {language === "en" ? "Home" : "Accueil"}
-            </Button1>
+            <motion.button
+    onClick={() => scrollToSection('home')}
+    className="relative inline-flex items-center justify-center px-4 py-2 overflow-hidden font-bold rounded-full group border-2 transition-colors duration-200 ease-in-out bg-white text-black border-white hover:bg-black hover:text-white w-full sm:w-auto"
+  >
+  <span className="w-24 h-24 rotate-45 translate-x-10 -translate-y-2 absolute left-0 top-0 bg-white opacity-[3%]"></span>
+  <span className="absolute top-0 left-0 w-40 h-40 -mt-1 transition-all duration-500 ease-in-out rotate-45 -translate-x-48 -translate-y-20 bg-black opacity-100 group-hover:-translate-x-6"></span>
+  <span className="relative w-full text-center transition-colors duration-200 ease-in-out sm:text-[9px] md:text-xs ">
+      {language === "en" ? "Home" : "Accueil"}
+    </span>
+    <span className="absolute inset-0 border-2 rounded-full"></span>
+  </motion.button>
 
             {/* Bouton Skills */}
-            <Button1
-              to="/skills"
-              isActive={activeButton === "/skills"}
-              className={`w-full px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
-            >
-              {language === "en" ? "Skills" : "Compétences"}
-            </Button1>
+            <motion.button
+     onClick={() => scrollToSection('skills')}
+      className="relative inline-flex items-center justify-center px-4 py-2 overflow-hidden font-bold rounded-full group border-2 transition-colors duration-200 ease-in-out bg-white text-black border-white hover:bg-black hover:text-white w-full sm:w-auto"
+    >
+      <span className="w-24 h-24 rotate-45 translate-x-10 -translate-y-2 absolute left-0 top-0 bg-white opacity-[3%]"></span>
+      <span className="absolute top-0 left-0 w-40 h-40 -mt-1 transition-all duration-500 ease-in-out rotate-45 -translate-x-48 -translate-y-20 bg-black opacity-100 group-hover:-translate-x-6"></span>
+      <span className="relative w-full text-center transition-colors duration-200 ease-in-out sm:text-[9px] md:text-xs ">
+        {language === "en" ? "Skills" : "Compétences"}
+      </span>
+      <span className="absolute inset-0 border-2 rounded-full"></span>
+    </motion.button>
 
             {/* Bouton About me */}
-            <Button1
-              to="/aboutme"
-              isActive={activeButton === "/aboutme"}
-              className={`w-full px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
-            >
-              {language === "en" ? "About me" : "À propos"}
-            </Button1>
+            <motion.button
+     onClick={() => scrollToSection('aboutme')}
+      className="relative inline-flex items-center justify-center px-4 py-2 overflow-hidden font-bold rounded-full group border-2 transition-colors duration-200 ease-in-out bg-white text-black border-white hover:bg-black hover:text-white w-full sm:w-auto"
+    >
+      <span className="w-24 h-24 rotate-45 translate-x-10 -translate-y-2 absolute left-0 top-0 bg-white opacity-[3%]"></span>
+      <span className="absolute top-0 left-0 w-40 h-40 -mt-1 transition-all duration-500 ease-in-out rotate-45 -translate-x-48 -translate-y-20 bg-black opacity-100 group-hover:-translate-x-6"></span>
+      <span className="relative w-full text-center transition-colors duration-200 ease-in-out sm:text-[9px] md:text-xs ">
+          {language === "en" ? "About me" : "À propos"}
+        </span>
+        <span className="absolute inset-0 border-2 rounded-full"></span>
+    </motion.button>
 
             {/* Bouton Contact me */}
-            <Button1
-              to="/contactme"
-              isActive={activeButton === "/contactme"}
-              className={`w-full px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
-            >
-              {language === "en" ? "Contact me" : "Contactez-moi"}
-            </Button1>
+           <motion.button
+     onClick={() => scrollToSection('contactme')}
+      className="relative inline-flex items-center justify-center px-4 py-2 overflow-hidden font-bold rounded-full group border-2 transition-colors duration-200 ease-in-out bg-white text-black border-white hover:bg-black hover:text-white w-full sm:w-auto"
+    >
+      <span className="w-24 h-24 rotate-45 translate-x-10 -translate-y-2 absolute left-0 top-0 bg-white opacity-[3%]"></span>
+      <span className="absolute top-0 left-0 w-40 h-40 -mt-1 transition-all duration-500 ease-in-out rotate-45 -translate-x-48 -translate-y-20 bg-black opacity-100 group-hover:-translate-x-6"></span>
+      <span className="relative w-full text-center transition-colors duration-200 ease-in-out sm:text-[9px] md:text-xs ">
+        {language === "en" ? "Contact me" : "Contactez-moi"}
+      </span>
+      <span className="absolute inset-0 border-2 rounded-full"></span>
+    </motion.button>
           </div>
         </motion.div>
       )}

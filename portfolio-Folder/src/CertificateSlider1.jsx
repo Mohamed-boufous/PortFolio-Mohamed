@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { motion } from 'framer-motion';
-
 import certificates from './Certif.jsx';
-
+import { LanguageContext } from './LanguageContext'; // Import LanguageContext
 const CertificateSlider1 = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+    const { language } = useContext(LanguageContext); // Use the language context
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % certificates.length);
@@ -29,13 +29,13 @@ const CertificateSlider1 = () => {
           onClick={handlePrev}
           className="bg-purple-600 text-white p-2 rounded-full hover:bg-purple-700 focus:outline-none"
         >
-          &#10094;
+          ❮
         </button>
         <button
           onClick={handleNext}
           className="bg-purple-600 text-white p-2 rounded-full hover:bg-purple-700 focus:outline-none"
         >
-          &#10095;
+          ❯
         </button>
       </div>
 
@@ -44,13 +44,13 @@ const CertificateSlider1 = () => {
         onClick={handlePrev}
         className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-purple-600 text-white p-2 rounded-full hover:bg-purple-700 focus:outline-none hidden sm:block"
       >
-        &#10094;
+        ❮
       </button>
       <button
         onClick={handleNext}
         className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-purple-600 text-white p-2 rounded-full hover:bg-purple-700 focus:outline-none hidden sm:block"
       >
-        &#10095;
+        ❯
       </button>
 
       {/* Slider container */}
@@ -85,8 +85,8 @@ const CertificateSlider1 = () => {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
               >
-                <p className="text-sm font-bold">{certificate.title}</p>
-                <p className="text-xs">{certificate.platform}</p>
+                <p className="text-sm font-bold">{language === 'en' ? certificate.title : certificate.title_fr}</p>
+                <p className="text-xs">{language === 'en' ? certificate.platform : certificate.platform_fr}</p>
               </motion.div>
             </a>
           </motion.div>

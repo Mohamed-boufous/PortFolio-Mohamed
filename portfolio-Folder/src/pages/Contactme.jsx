@@ -10,9 +10,7 @@ const Contactme = () => {
       <ContactCard />
 
       {/* Conteneur des balles fixé en bas de l'écran */}
-      <SplashCursor>
-        
-      </SplashCursor>
+      
     </div>
   );
 };
