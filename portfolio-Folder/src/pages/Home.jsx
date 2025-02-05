@@ -73,8 +73,12 @@ const Home = () => {
                 {/* Bouton de téléchargement avec animation */}
                 <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
                     <motion.a
-                        href="/mohamed.pdf"
-                        download="Mohamed_Boufous_CV.pdf"
+                        href={`${
+                            language === "en" ? "resume_Mohamed_Boufous.pdf" : "Cv_Mohamed_Boufous.pdf"
+                        }`}
+                        download={`${
+                            language === "en" ? "resume_Mohamed_Boufous.pdf" : "Cv_Mohamed_Boufous.pdf"
+                        }`}
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={handleDownload}
@@ -109,7 +113,7 @@ const Home = () => {
                                     />
                                 </svg>
                                 <span className="ml-2 text-green-600 font-semibold">
-                                    {language === "en" ? "Downloaded" : "Téléchargé"}
+                                    {language === "en" ? "Resume downloaded " : "CV téléchargé "}
                                 </span>
                             </motion.div>
                         )}

@@ -42,6 +42,7 @@ const Aboutme = () => {
         "Optimized for freelancers and clients, offering a wide range of services at various prices",
         "Real-time chat for users",
       ],
+      button:"Take a look" ,
     },
     fr: {
       education: "Éducation",
@@ -64,6 +65,7 @@ const Aboutme = () => {
         "Optimisé pour les freelancers et les clients, offrant une large gamme de services à divers prix",
         "Chat en temps réel pour les utilisateurs",
       ],
+      button:"Regardez ici" ,
     },
   };
 
@@ -93,6 +95,7 @@ const Aboutme = () => {
             to="2024"
             imageUrl={est}
             link="https://www.esta.ac.ma/?page_id=469"
+            button={texts[language].button}
           />
 
           {/* Carte pour l'école ENSAA Agadir */}
@@ -102,6 +105,7 @@ const Aboutme = () => {
             to="now"
             imageUrl={Ensaa}
             link="http://www.ensa-agadir.ac.ma/"
+            button={texts[language].button}
           />
         </div>
       </div>

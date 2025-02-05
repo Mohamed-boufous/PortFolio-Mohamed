@@ -3,7 +3,7 @@ import { CardBody, CardContainer, CardItem } from "../components/ui/3d-card";
 import { BorderBeam } from "../components/ui/border-beam";
 import { useDarkMode } from "../DarkModeContext"; // Importez useDarkMode
 
-export function SchoolCard({ schoolName, from, to, imageUrl, link }) {
+export function SchoolCard({ schoolName, from, to, imageUrl , link ,button }) {
   const { isDarkMode } = useDarkMode(); // Utilisez useDarkMode
 
   return (
@@ -55,7 +55,7 @@ export function SchoolCard({ schoolName, from, to, imageUrl, link }) {
             target="_blank"
             className="px-4 py-2 rounded-xl bg-purple-600 text-white text-xs font-bold hover:bg-purple-700 transition-colors"
           >
-            Take a look
+            {button}
           </CardItem>
         </div>
       </CardBody>
