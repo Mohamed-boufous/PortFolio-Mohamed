@@ -172,39 +172,48 @@ const ContactCard = () => {
                    
 
                     <div className="flex justify-center space-x-6 mt-6">
-                        <motion.a
-                            href="https://www.facebook.com/profile.php?id=100022534726772"
-                            whileHover={{ scale: 1.2, rotate: 15 }}
-                            whileTap={{ scale: 0.9 }}
-                            className={iconClasses}
-                        >
-                            <FaFacebook className="w-8 h-8" />
-                        </motion.a>
-                        <motion.a
-                            href="https://github.com/Mohamed-boufous"
-                            whileHover={{ scale: 1.2, rotate: 15 }}
-                            whileTap={{ scale: 0.9 }}
-                            className={iconClasses}
-                        >
-                            <FaGithub className="w-8 h-8" />
-                        </motion.a>
-                        <motion.a
-                            href="https://www.instagram.com/mohmad_boufous?igsh=NTc0bWNmaHZkcjY4"
-                            whileHover={{ scale: 1.2, rotate: 15 }}
-                            whileTap={{ scale: 0.9 }}
-                            className={iconClasses}
-                        >
-                            <FaInstagram className="w-8 h-8" />
-                        </motion.a>
-                        <motion.a
-                            href="http://www.linkedin.com/in/mohamed-boufous-529aa026a"
-                            whileHover={{ scale: 1.2, rotate: 15 }}
-                            whileTap={{ scale: 0.9 }}
-                            className={iconClasses}
-                        >
-                            <FaLinkedin className="w-8 h-8" />
-                        </motion.a>
-                    </div>
+    <motion.a
+        href="https://www.facebook.com/profile.php?id=100022534726772"
+        target="_blank"
+        rel="noopener noreferrer"
+        whileHover={{ scale: 1.2, rotate: 15 }}
+        whileTap={{ scale: 0.9 }}
+        className={iconClasses}
+    >
+        <FaFacebook className="w-8 h-8" />
+    </motion.a>
+    <motion.a
+        href="https://github.com/Mohamed-boufous"
+        target="_blank"
+        rel="noopener noreferrer"
+        whileHover={{ scale: 1.2, rotate: 15 }}
+        whileTap={{ scale: 0.9 }}
+        className={iconClasses}
+    >
+        <FaGithub className="w-8 h-8" />
+    </motion.a>
+    <motion.a
+        href="https://www.instagram.com/mohmad_boufous?igsh=NTc0bWNmaHZkcjY4"
+        target="_blank"
+        rel="noopener noreferrer"
+        whileHover={{ scale: 1.2, rotate: 15 }}
+        whileTap={{ scale: 0.9 }}
+        className={iconClasses}
+    >
+        <FaInstagram className="w-8 h-8" />
+    </motion.a>
+    <motion.a
+        href="http://www.linkedin.com/in/mohamed-boufous-529aa026a"
+        target="_blank"
+        rel="noopener noreferrer"
+        whileHover={{ scale: 1.2, rotate: 15 }}
+        whileTap={{ scale: 0.9 }}
+        className={iconClasses}
+    >
+        <FaLinkedin className="w-8 h-8" />
+    </motion.a>
+</div>
+
                 </motion.div>
             </div>
         </div>
