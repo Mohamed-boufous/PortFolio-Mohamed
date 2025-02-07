@@ -26,13 +26,13 @@ const CertificateSlider1 = () => {
       {/* Navigation buttons for mobile */}
       <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-4 z-10 sm:hidden">
         <button
-          onClick={handlePrev}
+          onClick={handleNext}
           className="bg-purple-600 text-white p-2 rounded-full hover:bg-purple-700 focus:outline-none"
         >
           ❮
         </button>
         <button
-          onClick={handleNext}
+          onClick={handlePrev}
           className="bg-purple-600 text-white p-2 rounded-full hover:bg-purple-700 focus:outline-none"
         >
           ❯
@@ -41,13 +41,13 @@ const CertificateSlider1 = () => {
 
       {/* Navigation buttons for medium and large screens */}
       <button
-        onClick={handlePrev}
+        onClick={handleNext}
         className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-purple-600 text-white p-2 rounded-full hover:bg-purple-700 focus:outline-none hidden sm:block"
       >
         ❮
       </button>
       <button
-        onClick={handleNext}
+        onClick={handlePrev}
         className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-purple-600 text-white p-2 rounded-full hover:bg-purple-700 focus:outline-none hidden sm:block"
       >
         ❯
