@@ -2,7 +2,7 @@ import datacamp from "./assets/datacamp.png";
 import Data365 from "./assets/Data365.jpg";
 import sololearn from "./assets/sololearn.png";
 import linkdin from "./assets/LinkdeIn.png";
-
+import AppsClub from "./assets/AppsClub.jpg";
 const certificates = [
   {
     id: 1,
@@ -78,6 +78,15 @@ const certificates = [
       platform_fr: "365 Data Science",
     imageUrl: Data365,
     link: "https://learn.365datascience.com/certificates/CC-45558F612B/",
+  },
+  {
+    id: 10,
+    title: "Data science Project",
+      title_fr: "Data SIENCE",
+    platform: "APPS CLUB",
+      platform_fr: "Data science",
+    imageUrl: AppsClub,
+    link: "https://drive.google.com/file/d/1Zhj6BVSzavfyHkSriBPefySfyy8R0j6J/view?usp=sharing",
   },
 ];
 

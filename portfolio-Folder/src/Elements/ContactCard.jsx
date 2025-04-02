@@ -3,14 +3,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { LanguageContext } from "../LanguageContext";
 import { DarkModeContext } from "../DarkModeContext";
-import { database, ref, push } from "../../firebaseConfig"; // Importe Firebase
+import { database, ref, push } from "../../firebaseConfig"; 
 
 const ContactCard = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
     const [errors, setErrors] = useState({});
-    const [status, setStatus] = useState(""); // Ajout de l'état status pour le feedback
+    const [status, setStatus] = useState(""); 
     const { language } = useContext(LanguageContext);
     const { isDarkMode } = useContext(DarkModeContext);
 
@@ -29,7 +29,7 @@ const ContactCard = () => {
             emailError: "Email is required",
             messageError: "Message is required",
             successMessage: "Message sent successfully!",
-            errorMessage: "Error sending message.", // Ajout message d'erreur
+            errorMessage: "Error sending message.", 
         },
         fr: {
             contactMe: "Contactez-moi",
@@ -44,7 +44,7 @@ const ContactCard = () => {
             emailError: "L'email est requis",
             messageError: "Le message est requis",
             successMessage: "Message envoyé avec succès !",
-             errorMessage: "Erreur lors de l'envoi du message.", // Ajout message d'erreur
+             errorMessage: "Erreur lors de l'envoi du message."
         },
     };
 
@@ -80,7 +80,7 @@ const ContactCard = () => {
         }
     };
 
-    // Styles conditionnels pour le mode sombre
+   
     const cardClasses = `max-w-md mx-auto px-8 py-6 rounded-lg shadow-lg border ${
         isDarkMode
             ? "bg-gray-800 border-gray-700 text-white"

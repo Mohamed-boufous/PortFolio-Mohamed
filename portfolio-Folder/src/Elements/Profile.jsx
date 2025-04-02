@@ -1,6 +1,6 @@
 import {React,useContext} from 'react'
-import { motion } from 'framer-motion'; // Importez Framer Motion
-import image from "../assets/Mohamed_Boufous.jpg"; // Importez votre image
+import { motion } from 'framer-motion'; 
+import image from "../assets/Mohamed_Boufous.jpg"; 
 import { DarkModeContext } from "../DarkModeContext";
 
 const Profile = () => {
@@ -9,7 +9,7 @@ const Profile = () => {
 <div
         style={{
           position: "relative",
-          borderRadius: "50%", // Forme circulaire
+          borderRadius: "50%",
           overflow: "hidden", // Pour s'assurer que l'image ne dépasse pas du cadre
           padding: "8px", // Espace entre le cadre et l'image
           width: "350px", // Taille du cadre circulaire
