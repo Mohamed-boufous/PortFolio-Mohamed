@@ -3,6 +3,7 @@ import Data365 from "./assets/Data365.jpg";
 import sololearn from "./assets/sololearn.png";
 import linkdin from "./assets/LinkdeIn.png";
 import AppsClub from "./assets/AppsClub.jpg";
+
 const certificates = [
   {
     id: 1,
@@ -80,7 +81,7 @@ const certificates = [
     link: "https://learn.365datascience.com/certificates/CC-45558F612B/",
   },
   {
-    id: 10,
+    id: 9,
     title: "Data science Project",
       title_fr: "Data SIENCE",
     platform: "APPS CLUB",
