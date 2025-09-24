@@ -3,6 +3,7 @@ import Data365 from "./assets/Data365.jpg";
 import sololearn from "./assets/sololearn.png";
 import linkdin from "./assets/LinkdeIn.png";
 import AppsClub from "./assets/AppsClub.jpg";
+import Oracle from "./assets/Oracle-Logo.png";
 
 const certificates = [
   {
@@ -16,12 +17,12 @@ const certificates = [
   },
   {
     id: 2,
-    title: "Introduction to R Programming",
-    title_fr: "Introduction à la programmation R",
-    platform: "365 Data Science",
-      platform_fr: "365 Data Science",
-    imageUrl: Data365,
-    link: "https://learn.365datascience.com/certificates/CC-4CDA8E9970/",
+    title: "Winning 1st APEX oracle Morocco R&D ",
+      title_fr: "Gagnant de la 1ʳᵉ place APEX Oracle Maroc R&D ",
+    platform: "Oracle",
+      platform_fr: "Oracle",
+    imageUrl: Oracle,
+    link: "https://drive.google.com/file/d/1F1mPbLXHM4vE2PXY3-rTnUQzrqCo5EHT/view?usp=sharing",
   },
   {
     id: 3,
@@ -35,12 +36,12 @@ const certificates = [
   },
   {
     id: 4,
-    title: "PHP",
-      title_fr: "PHP",
-    platform: "sololearn",
-      platform_fr: "sololearn",
-    imageUrl: sololearn,
-    link: "https://www.sololearn.com/en/certificates/CT-GIVTL5CI",
+    title: "Introduction to R Programming",
+    title_fr: "Introduction à la programmation R",
+    platform: "365 Data Science",
+      platform_fr: "365 Data Science",
+    imageUrl: Data365,
+    link: "https://learn.365datascience.com/certificates/CC-4CDA8E9970/",
   },
   {
     id: 5,
@@ -85,10 +86,29 @@ const certificates = [
     title: "Data science Project",
       title_fr: "Data SIENCE",
     platform: "APPS CLUB",
-      platform_fr: "Data science",
+      platform_fr: "APPS CLUB",
     imageUrl: AppsClub,
     link: "https://drive.google.com/file/d/1Zhj6BVSzavfyHkSriBPefySfyy8R0j6J/view?usp=sharing",
   },
+  {
+    id: 10,
+    title: "South Coding Cup",
+      title_fr: "South Coding Cup ",
+    platform: "APPS CLUB",
+      platform_fr: "APPS CLUB ",
+    imageUrl: AppsClub,
+    link: "https://drive.google.com/file/d/1cgn8OVHLFtle8BY1-dSjTJt4eHSvnQ6a/view?usp=sharing",
+  },
+  {
+    id: 11,
+    title: "Introduction to Data and Data Science",
+    title_fr: "Introduction aux données et à la science des données",
+    platform: "365 Data Science",
+    platform_fr: "365 Data Science",
+    imageUrl: Data365,
+    link: "https://learn.365datascience.com/certificates/CC-AB4AAF26E8/",
+  },
+  
 ];
 
 export default certificates;
