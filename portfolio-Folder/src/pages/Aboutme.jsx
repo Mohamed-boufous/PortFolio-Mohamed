@@ -10,7 +10,11 @@ import ManagerPro from "../assets/ManagerPro.png";
 import WorkExperienceCard from '../Elements/WorkExperienceCard';
 import Valableu from "../assets/valableu.jpg";
 import valaorange from "../assets/valaorange.jpeg";
+import tecforge from "../assets/tec.png";
+import Feelscan from "../assets/Feelscan.png";
+import Creative from "../assets/Creative.png";
 import { LanguageContext } from "../LanguageContext"; // Importez le contexte
+
 
 const handleAnimationComplete = () => {
   console.log('All letters have animated!');
@@ -31,6 +35,8 @@ const Aboutme = () => {
       gigDescription: "A service offering platform.",
       managerProDescription: "JavaFX desktop app for tournament management.",
       valableuPosition: "Internship in web development",
+      tecforgeDescription: "A platform for scraping Moroccan public tenders and enabling semantic search on tender documents.",
+      feelscanDescription: "A platform for detecting emotions from text and images.",
       valableuProjects: [
         "Developed a responsive car rental platform",
         "A diverse catalogue of cars with a modern design",
@@ -42,6 +48,20 @@ const Aboutme = () => {
         "Optimized for freelancers and clients, offering a wide range of services at various prices",
         "Real-time chat for users",
       ],
+      
+      tecforgePosition: "Internship in scraping and data analytics",
+tecforgeProjects: [
+  "A platform for scraping Moroccan public tender offers",
+  "Processing and analyzing tender documents",
+  "Implementing semantic search for efficient information retrieval",
+],
+creativeCompanyPosition: "Internship in Machine Learning",
+creativeCompanyProjects: [
+  "An emotion detection platform based on 7 primary emotions",
+    "Emotion analysis from text",
+    "Emotion analysis from images",
+],
+
       button:"Take a look" ,
     },
     fr: {
@@ -53,7 +73,9 @@ const Aboutme = () => {
       librolinkDescription: "Une plateforme de bibliothèque en ligne pour lire des livres.",
       gigDescription: "Une plateforme de proposition de services.",
       managerProDescription: "Application desktop JavaFX pour la gestion de tournois.",
+      tecforgeDescription: "Une plateforme pour le scraping des marchés publics marocains et la mise en place d’une recherche sémantique sur les documents d’appel d’offres.",
       valableuPosition: "Stage en développement web",
+      feelscanDescription: "Une plateforme de détection des émotions à partir de textes et d’images.",
       valableuProjects: [
         "Développement d'une plateforme de location de voitures responsive",
         "Un catalogue varié de voitures avec un design moderne",
@@ -65,6 +87,19 @@ const Aboutme = () => {
         "Optimisé pour les freelancers et les clients, offrant une large gamme de services à divers prix",
         "Chat en temps réel pour les utilisateurs",
       ],
+      tecforgePosition: "Stage en scraping et analyse de données",
+tecforgeProjects: [
+  "Une plateforme pour le scraping des offres de marchés publics marocains",
+  "Traitement et analyse des documents d’appel d’offres",
+  "Mise en place d’une recherche sémantique pour un accès efficace à l’information",
+],
+creativeCompanyPosition: "Stage en Machine Learning",
+creativeCompanyProjects: [
+ "Une plateforme de détection des émotions basée sur 7 émotions principales",
+    "Analyse des émotions à partir de textes",
+    "Analyse des émotions à partir d’images",
+],
+
       button:"Regardez ici" ,
     },
   };
@@ -125,31 +160,54 @@ const Aboutme = () => {
         />
       </div>
 
-      <div className="flex flex-col md:flex-row justify-center items-center gap-8 pb-[2rem] p-4">
-        {/* Carte pour Librolink */}
-        <ProjectCard
-          imageUrl={Librolink}
-          projectName="Librolink"
-          description={texts[language].librolinkDescription} // Texte conditionnel
-          githubUrl="https://github.com/Mohamed-boufous/LibroLink"
-        />
+    {/* Ce conteneur utilise flex-wrap pour que les cartes aillent automatiquement à la ligne et soient centrées. */}
+<div className="flex flex-wrap justify-center items-center gap-8 pb-[2rem] p-4">
+    {/* flex-wrap a été ajouté pour permettre aux éléments de passer à la ligne. */}
+    {/* flex-col et md:flex-row ont été supprimés car flex-wrap gère mieux la disposition. */}
 
-        {/* Carte pour Gig Galaxy */}
-        <ProjectCard
-          imageUrl={Gig}
-          projectName="Gig Galaxy"
-          description={texts[language].gigDescription} // Texte conditionnel
-          githubUrl="https://github.com/Mohamed-boufous/GiG-Galaxy"
-        />
+      {/* Carte 1 */}
+      <ProjectCard
+        imageUrl={Librolink}
+        projectName="Librolink"
+        description={texts[language].librolinkDescription}
+        githubUrl="https://github.com/Mohamed-boufous/LibroLink"
+      />
 
-        {/* Carte pour ManagerPro */}
-        <ProjectCard
-          imageUrl={ManagerPro}
-          projectName="ManagerPro"
-          description={texts[language].managerProDescription} // Texte conditionnel
-          githubUrl="https://github.com/Mohamed-boufous/Football-app-disktop"
-        />
-      </div>
+      {/* Carte 2 */}
+      <ProjectCard
+        imageUrl={Gig}
+        projectName="Gig Galaxy"
+        description={texts[language].gigDescription}
+        githubUrl="https://github.com/Mohamed-boufous/GiG-Galaxy"
+      />
+
+      {/* Carte 3 */}
+      <ProjectCard
+        imageUrl={ManagerPro}
+        projectName="ManagerPro"
+        description={texts[language].managerProDescription}
+        githubUrl="https://github.com/Mohamed-boufous/Football-app-disktop"
+      />
+      
+      {/* Carte 4 */}
+      <ProjectCard
+        imageUrl={tecforge}
+        projectName="tec forge project"
+        description={texts[language].tecforgeDescription}
+        githubUrl="https://github.com/Mohamed-boufous/Tecforge_project"
+      />
+      
+      {/* Carte 5 (ira à la ligne et sera centrée) */}
+      <ProjectCard
+        imageUrl={Feelscan}
+        projectName="Feelscan"
+        description={texts[language].feelscanDescription}
+        githubUrl="https://github.com/Mohamed-boufous/Projet_de_stage"
+      />
+      
+
+      {/* Vous pouvez ajouter d'autres cartes ici, elles suivront la même logique */}
+</div>
 
       {/* Section Expérience */}
       <div className="w-full flex justify-center mb-[2rem]">
@@ -166,25 +224,45 @@ const Aboutme = () => {
         />
       </div>
 
-      <div className="flex flex-col md:flex-row justify-center items-center gap-8 pb-[2rem] p-4">
-        {/* Carte pour Vala Bleu */}
-        <WorkExperienceCard
-          companyLogo={Valableu}
-          companyName="Vala Bleu"
-          position={texts[language].valableuPosition} // Texte conditionnel
-          duration="2023-06 - 2023-08"
-          projects={texts[language].valableuProjects} // Texte conditionnel
-        />
+      {/* Ce conteneur flexible permet aux cartes d'expérience de s'aligner et de passer à la ligne si nécessaire. */}
+<div className="flex flex-wrap justify-center items-center gap-8 pb-[2rem] p-4">
+    {/* Remplacement de 'flex-col md:flex-row' par 'flex-wrap' pour un affichage plus flexible. */}
 
-        {/* Carte pour Vala Orange */}
-        <WorkExperienceCard
-          companyLogo={valaorange}
-          companyName="Vala Orange"
-          position={texts[language].valaorangePosition} // Texte conditionnel
-          duration="2024-04 - 2024-06"
-          projects={texts[language].valaorangeProjects} // Texte conditionnel
-        />
-      </div>
+      {/* Carte pour Vala Bleu */}
+      <WorkExperienceCard
+        companyLogo={Valableu}
+        companyName="Vala Bleu"
+        position={texts[language].valableuPosition}
+        duration="2023-06 - 2023-08"
+        projects={texts[language].valableuProjects}
+      />
+
+      {/* Carte pour Vala Orange */}
+      <WorkExperienceCard
+        companyLogo={valaorange}
+        companyName="Vala Orange"
+        position={texts[language].valaorangePosition}
+        duration="2024-04 - 2024-06"
+        projects={texts[language].valaorangeProjects}
+      />
+      <WorkExperienceCard
+        companyLogo={tecforge}
+        companyName="Tec Forge"
+        position={texts[language].tecforgePosition}
+        duration="2025-07-01 - 2025-07-31"
+        projects={texts[language].tecforgeProjects}
+      />
+      <WorkExperienceCard
+        companyLogo={Creative}
+        companyName="Creative inernet solutions"
+        position={texts[language].creativeCompanyPosition}
+        duration="2025-08-01 - 2025-08-31"
+        projects={texts[language].creativeCompanyProjects}
+      />
+      
+
+      
+</div>
     </div>
   );
 };
