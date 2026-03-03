@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion"; // Importez framer-motion
 import logo from "./assets/shark_logo2.png";
+import logoWhite from "./assets/logo_sharkWhite.png";
 import Button1 from "./Button1";
 import { LanguageContext } from "./LanguageContext"; // Contexte de langue
 import { useDarkMode } from "./DarkModeContext"; // Contexte de mode sombre
@@ -33,7 +34,7 @@ export default function Header() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="h-16 w-auto cursor-pointer"
-              src={logo}
+              src={isDarkMode ? logoWhite : logo}
               alt="Your Company"
               onClick={goToHome}
             />
