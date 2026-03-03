@@ -1,11 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Ajoutez ceci à votre fichier CSS global */
 html {
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
+    scroll-behavior: smooth;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    @apply bg-gray-50 dark:bg-gray-950 transition-colors duration-300;
+}
   @media (max-width: 768px) {
     .header-buttons {
       display: flex;

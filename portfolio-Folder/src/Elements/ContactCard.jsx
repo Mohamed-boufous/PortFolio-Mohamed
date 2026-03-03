@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { LanguageContext } from "../LanguageContext";
 import { DarkModeContext } from "../DarkModeContext";
-import { database, ref, push } from "../../firebaseConfig"; 
+import { database, ref, push } from "../../firebaseConfig"; // Assuming correct path
 
 const ContactCard = () => {
     const [name, setName] = useState("");
@@ -14,10 +14,9 @@ const ContactCard = () => {
     const { language } = useContext(LanguageContext);
     const { isDarkMode } = useContext(DarkModeContext);
 
-    // Textes traduits
     const texts = {
         en: {
-            contactMe: "Contact Me",
+            contactMe: "Get In Touch",
             yourName: "Your Name",
             yourEmail: "Your Email",
             yourMessage: "Your Message",
@@ -32,10 +31,10 @@ const ContactCard = () => {
             errorMessage: "Error sending message.", 
         },
         fr: {
-            contactMe: "Contactez-moi",
-            yourName: "Votre nom",
-            yourEmail: "Votre email",
-            yourMessage: "Votre message",
+            contactMe: "Me Contacter",
+            yourName: "Votre Nom",
+            yourEmail: "Votre Email",
+            yourMessage: "Votre Message",
             namePlaceholder: "Entrez votre nom",
             emailPlaceholder: "Entrez votre email",
             messagePlaceholder: "Entrez votre message",
@@ -59,62 +58,84 @@ const ContactCard = () => {
 
      const handleSubmit = async (e) => {
         e.preventDefault();
-    
+        
         if (validateForm()) {
-          try {
-              await push(ref(database, "messages"), {
-                  name,
-                  email,
-                  message,
-                  timestamp: new Date().toISOString(),
-              });
-              setStatus(texts[language].successMessage);
-              setName("");
-              setEmail("");
-              setMessage("");
-              setErrors({});
-          } catch (error) {
-              console.error("Erreur lors de l'envoi :", error);
-              setStatus(texts[language].errorMessage);
-          }
+            setStatus("Sending...");
+            try {
+                await push(ref(database, "messages"), {
+                    name,
+                    email,
+                    message,
+                    timestamp: new Date().toISOString(),
+                });
+                setStatus(texts[language].successMessage);
+                setName("");
+                setEmail("");
+                setMessage("");
+                setErrors({});
+                setTimeout(() => setStatus(""), 5000);
+            } catch (error) {
+                console.error("Erreur lors de l'envoi :", error);
+                setStatus(texts[language].errorMessage);
+            }
         }
     };
 
-   
-    const cardClasses = `max-w-md mx-auto px-8 py-6 rounded-lg shadow-lg border ${
+    const cardContainerClasses = `relative max-w-lg mx-auto p-8 rounded-[2rem] border transition-all duration-500 overflow-hidden ${
         isDarkMode
-            ? "bg-gray-800 border-gray-700 text-white"
-            : "bg-white border-purple-200 text-purple-800"
+            ? "bg-gray-900/60 border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)] backdrop-blur-xl hover:shadow-[0_8px_32px_rgba(168,85,247,0.2)]"
+            : "bg-white/80 border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.06)] backdrop-blur-xl hover:shadow-[0_10px_40px_rgba(168,85,247,0.15)]"
     }`;
 
-    const inputClasses = `w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 transition duration-300 ${
-        isDarkMode
-            ? "bg-gray-700 text-white focus:ring-purple-500"
-            : "bg-purple-50 focus:ring-purple-300"
+    const labelClasses = `block mb-2 text-sm font-semibold tracking-wide ${
+        isDarkMode ? "text-gray-300" : "text-gray-700"
     }`;
 
-    const buttonClasses = `w-full py-2 px-4 rounded-lg transition duration-300 ${
+    const inputClasses = `w-full px-5 py-3 rounded-xl border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500/50 ${
         isDarkMode
-            ? "bg-purple-700 hover:bg-purple-600 text-white"
-            : "bg-purple-600 hover:bg-purple-700 text-white"
+            ? "bg-black/20 border-white/10 text-white placeholder-gray-500 focus:bg-white/5"
+            : "bg-gray-50/50 border-gray-200 text-gray-800 placeholder-gray-400 focus:bg-white"
     }`;
 
-    const iconClasses = `transition-colors duration-300 ${
-        isDarkMode ? "text-purple-400 hover:text-purple-300" : "text-purple-600 hover:text-purple-800"
+    const buttonClasses = `w-full py-4 rounded-xl font-bold tracking-wide transition-all duration-300 shadow-md ${
+        isDarkMode
+            ? "bg-purple-600 text-white hover:bg-purple-500 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]"
+            : "bg-purple-600 text-white hover:bg-purple-700 hover:shadow-[0_0_20px_rgba(147,51,234,0.3)]"
+    }`;
+
+    const iconClasses = `p-3 rounded-full transition-all duration-300 flex items-center justify-center ${
+        isDarkMode 
+        ? "bg-white/5 text-purple-400 hover:bg-white/10 hover:text-purple-300 hover:shadow-[0_0_15px_rgba(168,85,247,0.3)]" 
+        : "bg-purple-50 text-purple-600 hover:bg-purple-100 hover:text-purple-700 hover:shadow-[0_0_10px_rgba(168,85,247,0.2)]"
     }`;
 
     return (
-        <div className="container px-4 mx-auto mt-16">
-            <div className="mx-auto">
-                <motion.div
-                    className={cardClasses}
-                    whileHover={{ scale: 1.02, rotate: 0 }}
-                    transition={{ type: "spring", stiffness: 100, damping: 10 }}
-                >
-                    <h2 className="text-2xl font-semibold mb-4">{texts[language].contactMe}</h2>
-                    <form onSubmit={handleSubmit}>
-                        <div className="mb-4">
-                            <label className="block mb-1" htmlFor="name">
+        <div className="container px-4 mx-auto relative z-10 w-full">
+            <motion.div
+                className={cardContainerClasses}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                whileHover={{ y: -5 }}
+            >
+                {/* Decorative Glow */}
+                <div className={`absolute -top-20 -right-20 w-64 h-64 rounded-full blur-[4rem] opacity-20 pointer-events-none transition-all duration-500 ${
+                    isDarkMode ? "bg-purple-500" : "bg-purple-400"
+                }`}></div>
+                <div className={`absolute -bottom-20 -left-20 w-64 h-64 rounded-full blur-[4rem] opacity-20 pointer-events-none transition-all duration-500 ${
+                    isDarkMode ? "bg-blue-500" : "bg-blue-400"
+                }`}></div>
+
+                <div className="relative z-10">
+                    <h2 className={`text-4xl font-extrabold mb-8 text-center tracking-tight bg-clip-text text-transparent bg-gradient-to-r ${
+                        isDarkMode ? "from-purple-400 to-pink-400" : "from-purple-600 to-indigo-600"
+                    }`}>
+                        {texts[language].contactMe}
+                    </h2>
+                    
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                        <div>
+                            <label className={labelClasses} htmlFor="name">
                                 {texts[language].yourName}
                             </label>
                             <input
@@ -123,13 +144,16 @@ const ContactCard = () => {
                                 type="text"
                                 id="name"
                                 value={name}
-                                onChange={(e) => setName(e.target.value)}
+                                onChange={(e) => {
+                                    setName(e.target.value);
+                                    if(errors.name) setErrors({...errors, name: null});
+                                }}
                             />
-                            {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+                            {errors.name && <motion.p initial={{opacity:0, y:-5}} animate={{opacity:1, y:0}} className="text-pink-500 text-xs font-semibold mt-2">{errors.name}</motion.p>}
                         </div>
 
-                        <div className="mb-4">
-                            <label className="block mb-1" htmlFor="email">
+                        <div>
+                            <label className={labelClasses} htmlFor="email">
                                 {texts[language].yourEmail}
                             </label>
                             <input
@@ -138,84 +162,111 @@ const ContactCard = () => {
                                 type="email"
                                 id="email"
                                 value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                onChange={(e) => {
+                                    setEmail(e.target.value);
+                                    if(errors.email) setErrors({...errors, email: null});
+                                }}
                             />
-                            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+                            {errors.email && <motion.p initial={{opacity:0, y:-5}} animate={{opacity:1, y:0}} className="text-pink-500 text-xs font-semibold mt-2">{errors.email}</motion.p>}
                         </div>
 
-                        <div className="mb-4">
-                            <label className="block mb-1" htmlFor="message">
+                        <div>
+                            <label className={labelClasses} htmlFor="message">
                                 {texts[language].yourMessage}
                             </label>
                             <textarea
-                                className={inputClasses}
-                                rows="4"
+                                className={`${inputClasses} resize-none`}
+                                rows="5"
                                 placeholder={texts[language].messagePlaceholder}
                                 id="message"
                                 value={message}
-                                onChange={(e) => setMessage(e.target.value)}
+                                onChange={(e) => {
+                                    setMessage(e.target.value);
+                                    if(errors.message) setErrors({...errors, message: null});
+                                }}
                             ></textarea>
-                            {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
+                            {errors.message && <motion.p initial={{opacity:0, y:-5}} animate={{opacity:1, y:0}} className="text-pink-500 text-xs font-semibold mt-2">{errors.message}</motion.p>}
                         </div>
 
                         <motion.button
                             className={buttonClasses}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
                             type="submit"
                         >
                             {texts[language].sendMessage}
                         </motion.button>
                     </form>
 
-                    {status && <p className="mt-2 text-center">{status}</p>}
-                   
+                    <AnimatePresence>
+                        {status && (
+                            <motion.div 
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.9 }}
+                                className={`mt-6 p-3 rounded-lg text-center font-medium text-sm border ${
+                                    status.includes("Error") || status.includes("Erreur") 
+                                    ? "bg-red-500/10 text-red-500 border-red-500/20" 
+                                    : "bg-green-500/10 text-green-500 border-green-500/20"
+                                }`}
+                            >
+                                {status}
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
 
-                    <div className="flex justify-center space-x-6 mt-6">
-    <motion.a
-        href="https://www.facebook.com/profile.php?id=100022534726772"
-        target="_blank"
-        rel="noopener noreferrer"
-        whileHover={{ scale: 1.2, rotate: 15 }}
-        whileTap={{ scale: 0.9 }}
-        className={iconClasses}
-    >
-        <FaFacebook className="w-8 h-8" />
-    </motion.a>
-    <motion.a
-        href="https://github.com/Mohamed-boufous"
-        target="_blank"
-        rel="noopener noreferrer"
-        whileHover={{ scale: 1.2, rotate: 15 }}
-        whileTap={{ scale: 0.9 }}
-        className={iconClasses}
-    >
-        <FaGithub className="w-8 h-8" />
-    </motion.a>
-    <motion.a
-        href="https://www.instagram.com/mohmad_boufous?igsh=NTc0bWNmaHZkcjY4"
-        target="_blank"
-        rel="noopener noreferrer"
-        whileHover={{ scale: 1.2, rotate: 15 }}
-        whileTap={{ scale: 0.9 }}
-        className={iconClasses}
-    >
-        <FaInstagram className="w-8 h-8" />
-    </motion.a>
-    <motion.a
-        href="http://www.linkedin.com/in/mohamed-boufous-529aa026a"
-        target="_blank"
-        rel="noopener noreferrer"
-        whileHover={{ scale: 1.2, rotate: 15 }}
-        whileTap={{ scale: 0.9 }}
-        className={iconClasses}
-    >
-        <FaLinkedin className="w-8 h-8" />
-    </motion.a>
-</div>
+                    <div className={`mt-10 pt-8 border-t flex flex-col items-center space-y-4 ${isDarkMode ? "border-white/10" : "border-gray-200"}`}>
+                        <p className={`text-sm font-semibold tracking-wider uppercase ${isDarkMode ? "text-gray-400" : "text-gray-500"}`}>Or find me on</p>
+                        <div className="flex justify-center space-x-6">
+                            <motion.a
+                                href="https://www.facebook.com/profile.php?id=100022534726772"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                whileHover={{ scale: 1.1, y: -3 }}
+                                whileTap={{ scale: 0.9 }}
+                                className={iconClasses}
+                                aria-label="Facebook"
+                            >
+                                <FaFacebook className="w-6 h-6" />
+                            </motion.a>
+                            <motion.a
+                                href="https://github.com/Mohamed-boufous"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                whileHover={{ scale: 1.1, y: -3 }}
+                                whileTap={{ scale: 0.9 }}
+                                className={iconClasses}
+                                aria-label="GitHub"
+                            >
+                                <FaGithub className="w-6 h-6" />
+                            </motion.a>
+                            <motion.a
+                                href="https://www.instagram.com/mohmad_boufous?igsh=NTc0bWNmaHZkcjY4"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                whileHover={{ scale: 1.1, y: -3 }}
+                                whileTap={{ scale: 0.9 }}
+                                className={iconClasses}
+                                aria-label="Instagram"
+                            >
+                                <FaInstagram className="w-6 h-6" />
+                            </motion.a>
+                            <motion.a
+                                href="http://www.linkedin.com/in/mohamed-boufous-529aa026a"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                whileHover={{ scale: 1.1, y: -3 }}
+                                whileTap={{ scale: 0.9 }}
+                                className={iconClasses}
+                                aria-label="LinkedIn"
+                            >
+                                <FaLinkedin className="w-6 h-6" />
+                            </motion.a>
+                        </div>
+                    </div>
 
-                </motion.div>
-            </div>
+                </div>
+            </motion.div>
         </div>
     );
 };

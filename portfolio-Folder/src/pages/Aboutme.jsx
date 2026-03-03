@@ -105,7 +105,7 @@ creativeCompanyProjects: [
   };
 
   return (
-    <div className='mt-[4rem]'>
+    <div className='mt-[4rem] pt-16 md:pt-24'>
       {/* Section Éducation */}
       <div className="w-full flex justify-center">
         <AnimatedText

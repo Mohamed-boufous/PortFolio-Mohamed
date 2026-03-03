@@ -2,9 +2,10 @@ import React, { useState, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import BlurText from "../BlurText/BlurText";
 import TrueFocus from '../TrueFocus/TrueFocus';
-import Profile from '../Elements/Profile';
+import { AsciiArt } from "../components/ui/ascii-art";
 import { LanguageContext } from "../LanguageContext";
-import { useDarkMode } from "../DarkModeContext"; // Importez le contexte du mode sombre
+import { useDarkMode } from "../DarkModeContext";
+import profileImage from "../assets/Mohamed_Boufous.jpg";
 
 const handleAnimationComplete = () => {
     console.log('Animation completed!');
@@ -13,20 +14,75 @@ const handleAnimationComplete = () => {
 const Home = () => {
     const [isDownloaded, setIsDownloaded] = useState(false);
     const { language } = useContext(LanguageContext);
-    const { isDarkMode } = useDarkMode(); // Utilisez le contexte pour obtenir le mode sombre
+    const { isDarkMode } = useDarkMode();
 
     const handleDownload = () => {
         setIsDownloaded(true);
     };
 
     return (
-        <div className="flex flex-col md:flex-row items-center justify-center md:justify-between min-h-screen p-4 md:p-8 relative">
-            {/* Composant Profile en haut sur les petits écrans */}
-            <div className="order-1 md:order-2 mb-8 md:mb-0">
-                <Profile />
+        <div className="flex flex-col md:flex-row items-center justify-center md:justify-between min-h-screen p-4 md:p-8 pt-20 md:pt-24 relative z-10">
+            {/* Interactive Profile Picture Container */}
+            <div className="order-1 md:order-2 mb-8 md:mb-0 w-full md:w-1/2 flex justify-center perspective-1000">
+                <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full shadow-2xl overflow-hidden border-4 border-transparent transition-all duration-700">
+                    
+                    {/* The AsciiArt (Underneath Layer, always visible when top is hidden) */}
+                    <div className="absolute inset-0 z-0">
+                        <AsciiArt
+                            src={profileImage}
+                            resolution={80}
+                            color={isDarkMode ? "white" : "#7c3aed"} // #7c3aed is tailwind's purple-600
+                            animationStyle="fade"
+                            animationDuration={1.5}
+                            animateOnView={false}
+                            className={`w-full h-full ${isDarkMode ? 'bg-neutral-950' : 'bg-neutral-100'}`} 
+                        />
+                    </div>
+
+                    {/* Original Photo (Top Layer, animating automatically to create a glitch effect) */}
+                    <motion.img
+                        src={profileImage}
+                        alt="Mohamed Boufous - Portfolio"
+                        className="absolute inset-0 w-full h-full object-cover z-10"
+                        animate={{ 
+                            opacity: [1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1] 
+                        }}
+                        transition={{
+                            duration: 6,             // Loop runs every 6 seconds
+                            times: [
+                                0,      // start
+                                0.5,    // wait perfectly still
+                                0.51,   // FLASH 1 OFF (quick micro-glitch)
+                                0.53,   // FLASH 1 ON
+                                0.6,    // wait perfectly still
+                                0.61,   // FLASH 2 OFF (second micro-glitch)
+                                0.63,   // FLASH 2 ON
+                                0.7,    // wait perfectly still
+                                0.71,   // THE BIG REVEAL OFF (Ascii visible)
+                                0.95,   // THE BIG REVEAL ENDS (Stays visible for 1.44 seconds)
+                                0.96,   // ON (Back to original picture instantly)
+                                1       // end
+                            ], 
+                            repeat: Infinity,
+                            ease: "linear"
+                        }}
+                    />
+                    
+                    {/* Interactive Animated Border around the group */}
+                    <motion.div
+                        className={`absolute inset-0 rounded-full border-[2px] border-dashed pointer-events-none z-20 ${isDarkMode ? "border-white/30" : "border-purple-600/30"}`}
+                        initial={{ rotate: 0 }}
+                        animate={{ rotate: 360 }}
+                        transition={{
+                            duration: 25,
+                            repeat: Infinity,
+                            ease: "linear",
+                        }}
+                    />
+                </div>
             </div>
             {/* Contenu principal en bas sur les petits écrans */}
-            <div className="order-2 md:order-1 mb-8 md:mb-16 w-full text-center md:text-left">
+            <div className="order-2 md:order-1 w-full text-center md:text-left">
                 {/* Centrer uniquement sur les écrans mobiles */}
                 <div className="flex justify-center md:justify-start">
     <BlurText

@@ -21,7 +21,7 @@ const RollingGallery = ({
     }
   }, []);
 
-  const cylinderWidth = isScreenSizeSm ? 800 : 1500; // Réduire la largeur du cylindre pour les petits écrans
+  const cylinderWidth = isScreenSizeSm ? 1200 : 2500; // Augmenter la largeur pour espacer plus d'icônes
   const faceCount = icons.length;
   const faceWidth = (cylinderWidth / faceCount) * 1.5;
   const radius = cylinderWidth / (2 * Math.PI);
@@ -119,14 +119,14 @@ const RollingGallery = ({
             >
               {/* Icône de la technologie */}
               <Icon
-                className={`pointer-events-none h-[60px] w-[60px] sm:h-[80px] sm:w-[80px] transition-transform duration-300 ease-out group-hover:scale-105 ${
+                className={`pointer-events-none h-[40px] w-[40px] sm:h-[50px] sm:w-[50px] transition-transform duration-300 ease-out group-hover:scale-110 ${
                   isDarkMode ? "text-white" : "text-black"
                 }`} // Couleur conditionnelle
               />
 
               {/* Nom de la technologie (affiché au survol) */}
               <span
-                className={`mt-2 text-xs sm:text-sm font-medium transition-opacity duration-300 group-hover:opacity-100 ${
+                className={`mt-2 text-[10px] sm:text-xs whitespace-nowrap font-medium transition-opacity duration-300 group-hover:opacity-100 ${
                   isDarkMode ? "text-white" : "text-black"
                 }`} // Couleur conditionnelle
               >

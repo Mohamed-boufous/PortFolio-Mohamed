@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion"; // Importez framer-motion
-import logo from "./assets/logo.png";
+import logo from "./assets/shark_logo2.png";
 import Button1 from "./Button1";
 import { LanguageContext } from "./LanguageContext"; // Contexte de langue
 import { useDarkMode } from "./DarkModeContext"; // Contexte de mode sombre
@@ -24,7 +24,7 @@ export default function Header() {
   };
 
   return (
-    <nav className="bg-white dark:bg-gray-900 shadow-md">
+    <nav className="fixed w-full top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200/50 dark:border-white/10 shadow-sm transition-all duration-300">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           {/* Logo */}
@@ -32,7 +32,7 @@ export default function Header() {
             <motion.img
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="h-60 w-auto cursor-pointer"
+              className="h-16 w-auto cursor-pointer"
               src={logo}
               alt="Your Company"
               onClick={goToHome}
@@ -102,7 +102,6 @@ export default function Header() {
     <Button1
   to="/"
   isActive={activeButton === "/"}
-  className="text-gray-900 dark:text-white"
 >
   {language === "en" ? "Home" : "Accueil"}
 </Button1>
@@ -110,7 +109,7 @@ export default function Header() {
       <Button1
         to="/skills"
         isActive={activeButton === "/skills"}
-        className={`text-gray-900 dark:text-white ${language === "fr" ? "text-xs" : ""}`}
+        className={`${language === "fr" ? "text-xs" : ""}`}
       >
         {language === "en" ? "Skills" : "Compétences"}
       </Button1>
@@ -118,7 +117,7 @@ export default function Header() {
       <Button1
         to="/aboutme"
         isActive={activeButton === "/aboutme"}
-        className={`text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
+        className={`${language === "fr" ? "text-sm" : ""}`}
       >
         {language === "en" ? "About me" : "À propos"}
       </Button1>
@@ -126,7 +125,7 @@ export default function Header() {
       <Button1
         to="/contactme"
         isActive={activeButton === "/contactme"}
-        className={`text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
+        className={`${language === "fr" ? "text-sm" : ""}`}
       >
         {language === "en" ? "Contact me" : "Contactez-moi"}
       </Button1>
@@ -136,18 +135,26 @@ export default function Header() {
     <div className="flex items-center space-x-4 ml-4">
       <motion.button
         onClick={toggleLanguage}
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ scale: 1.1, rotate: 10 }}
         whileTap={{ scale: 0.9 }}
-        className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
+        className={`p-2 rounded-full transition-all duration-300 flex items-center justify-center ${
+          isDarkMode
+            ? "bg-white/10 text-white hover:bg-white/20 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+            : "bg-gray-100 text-gray-800 hover:bg-gray-200 border border-gray-200 hover:shadow-[0_0_15px_rgba(0,0,0,0.1)]"
+        }`}
       >
-        {language === "en" ? "🇫🇷" : "🇬🇧"}
+        <span className="text-xl leading-none">{language === "en" ? "🇫🇷" : "🇬🇧"}</span>
       </motion.button>
 
       <motion.button
         onClick={toggleDarkMode}
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ scale: 1.1, rotate: -15 }}
         whileTap={{ scale: 0.9 }}
-        className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
+        className={`p-2 rounded-full transition-all duration-300 flex items-center justify-center ${
+          isDarkMode
+            ? "bg-white/10 hover:bg-white/20 hover:shadow-[0_0_15px_rgba(234,179,8,0.3)]"
+            : "bg-gray-100 hover:bg-gray-200 border border-gray-200 hover:shadow-[0_0_15px_rgba(168,85,247,0.3)]"
+        }`}
       >
         {isDarkMode ? (
           <svg
@@ -248,7 +255,7 @@ export default function Header() {
             <Button1
               to="/"
               isActive={activeButton === "/"}
-              className={`w-full px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
+              className={`w-full ${language === "fr" ? "text-sm" : ""}`}
             >
               {language === "en" ? "Home" : "Accueil"}
             </Button1>
@@ -257,7 +264,7 @@ export default function Header() {
             <Button1
               to="/skills"
               isActive={activeButton === "/skills"}
-              className={`w-full px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
+              className={`w-full ${language === "fr" ? "text-sm" : ""}`}
             >
               {language === "en" ? "Skills" : "Compétences"}
             </Button1>
@@ -266,7 +273,7 @@ export default function Header() {
             <Button1
               to="/aboutme"
               isActive={activeButton === "/aboutme"}
-              className={`w-full px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
+              className={`w-full ${language === "fr" ? "text-sm" : ""}`}
             >
               {language === "en" ? "About me" : "À propos"}
             </Button1>
@@ -275,7 +282,7 @@ export default function Header() {
             <Button1
               to="/contactme"
               isActive={activeButton === "/contactme"}
-              className={`w-full px-6 py-3 text-center hover:bg-purple-100 rounded-lg transition-colors duration-300 text-gray-900 dark:text-white ${language === "fr" ? "text-sm" : ""}`}
+              className={`w-full ${language === "fr" ? "text-sm" : ""}`}
             >
               {language === "en" ? "Contact me" : "Contactez-moi"}
             </Button1>

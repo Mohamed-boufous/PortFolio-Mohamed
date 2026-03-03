@@ -2,27 +2,56 @@ import React, { useContext } from "react"; // Ajoutez useContext
 import Card from '../Elements/Card';
 import AnimatedText from '../Elements/AnimatedText';
 import RollingGallery from '../Elements/RollingGallery';
-import { FaReact, FaJava, FaPython } from "react-icons/fa";
-import { SiTailwindcss, SiR, SiLinux, SiC } from "react-icons/si";
+import { 
+  FaPython, FaJava, FaReact, FaGithub, FaDocker, FaSpider, 
+  FaChartArea, FaChartPie, FaCogs, FaGitAlt, FaChartBar
+} from "react-icons/fa";
+import { 
+  SiTailwindcss, SiC, SiJavascript, SiScikitlearn, SiNumpy, SiPandas, 
+  SiMysql, SiOracle, SiArangodb, SiNeo4J
+} from "react-icons/si";
 import { DiPhp } from "react-icons/di";
-import { TbBrandCpp, TbBrandHtml5 } from "react-icons/tb";
-import { SiOctave } from "react-icons/si"; // Alternative à MATLAB
+import { TbSql } from "react-icons/tb";
 import { LanguageContext } from "../LanguageContext"; // Importez le contexte
 
 import CertificateSlider1 from "../CertificateSlider1"
 
 // Liste des icônes avec leurs noms
 const icons = [
-  { icon: FaReact, name: "React" },
-  { icon: DiPhp, name: "PHP" },
-  { icon: SiOctave, name: "MATLAB" },
-  { icon: SiR, name: "R" },
-  { icon: SiC, name: "C" },
-  { icon: FaJava, name: "Java" },
+  // Languages
   { icon: FaPython, name: "Python" },
-  { icon: SiTailwindcss, name: "Tailwind " },
-  { icon: TbBrandHtml5, name: "HTML" },
-  { icon: SiLinux, name: "Linux" },
+  { icon: FaJava, name: "Java" },
+  { icon: SiJavascript, name: "JavaScript" },
+  { icon: DiPhp, name: "PHP" },
+  { icon: SiC, name: "C" },
+  { icon: TbSql, name: "SQL" },
+  
+  // Data Science
+  { icon: SiScikitlearn, name: "Scikit-learn" },
+  { icon: SiNumpy, name: "NumPy" },
+  { icon: SiPandas, name: "Pandas" },
+  { icon: FaChartArea, name: "Matplotlib" },
+  { icon: FaChartPie, name: "Statistics" },
+  { icon: FaSpider, name: "Web Scraping" },
+  
+  // Web Development
+  { icon: FaReact, name: "ReactJS" },
+  { icon: SiTailwindcss, name: "TailwindCSS" },
+  { icon: SiOracle, name: "APEX" },
+
+  // Databases
+  { icon: SiMysql, name: "MySQL" },
+  { icon: SiOracle, name: "Oracle DB" },
+  { icon: SiOracle, name: "PL/SQL" },
+  { icon: SiArangodb, name: "ArangoDB" },
+  { icon: SiNeo4J, name: "Neo4j" },
+  
+  // Tools & Skills
+  { icon: FaCogs, name: "ETL" },
+  { icon: FaChartBar, name: "Power BI" },
+  { icon: FaGithub, name: "GitHub" },
+  { icon: FaGitAlt, name: "Git" },
+  { icon: FaDocker, name: "Docker" },
 ];
 
 const handleAnimationComplete = () => {
