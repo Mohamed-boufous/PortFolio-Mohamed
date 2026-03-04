@@ -138,13 +138,17 @@ export default function Header() {
         onClick={toggleLanguage}
         whileHover={{ scale: 1.1, rotate: 10 }}
         whileTap={{ scale: 0.9 }}
-        className={`p-2 rounded-full transition-all duration-300 flex items-center justify-center ${
+        className={`px-3 py-2 rounded-full transition-all duration-300 flex items-center justify-center ${
           isDarkMode
             ? "bg-white/10 text-white hover:bg-white/20 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]"
             : "bg-gray-100 text-gray-800 hover:bg-gray-200 border border-gray-200 hover:shadow-[0_0_15px_rgba(0,0,0,0.1)]"
         }`}
       >
-        <span className="text-xl leading-none">{language === "en" ? "🇫🇷" : "🇬🇧"}</span>
+        <img 
+          src={language === "en" ? "https://flagcdn.com/w40/us.png" : "https://flagcdn.com/w40/fr.png"} 
+          alt={language === "en" ? "English" : "Français"} 
+          className="w-5 h-auto rounded-sm shadow-sm opacity-90 transition-opacity hover:opacity-100" 
+        />
       </motion.button>
 
       <motion.button
@@ -247,9 +251,13 @@ export default function Header() {
             onClick={toggleLanguage}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="absolute top-4 right-32 p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
+            className="absolute top-4 right-32 p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300 flex items-center justify-center"
           >
-            {language === "en" ? "🇫🇷" : "🇬🇧"}
+            <img 
+              src={language === "en" ? "https://flagcdn.com/w40/us.png" : "https://flagcdn.com/w40/fr.png"} 
+              alt={language === "en" ? "English" : "Français"} 
+              className="w-5 h-auto rounded-sm shadow-sm" 
+            />
           </motion.button>
           <div className="flex flex-col items-center gap-2 px-4 pb-3 pt-2 overflow-hidden transition-all duration-300 ease-in-out bg-white dark:bg-gray-900">
             {/* Bouton Home */}
