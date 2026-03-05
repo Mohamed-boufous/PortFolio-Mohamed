@@ -8,8 +8,9 @@ import {
 } from "react-icons/fa";
 import { 
   SiTailwindcss, SiC, SiJavascript, SiScikitlearn, SiNumpy, SiPandas, 
-  SiMysql, SiOracle, SiArangodb, SiNeo4J
+  SiMysql, SiArangodb, SiNeo4J
 } from "react-icons/si";
+import { GrOracle } from "react-icons/gr";
 import { DiPhp } from "react-icons/di";
 import { TbSql } from "react-icons/tb";
 import { LanguageContext } from "../LanguageContext"; // Importez le contexte
@@ -37,12 +38,12 @@ const icons = [
   // Web Development
   { icon: FaReact, name: "ReactJS" },
   { icon: SiTailwindcss, name: "TailwindCSS" },
-  { icon: SiOracle, name: "APEX" },
+  { icon: GrOracle, name: "APEX" },
 
   // Databases
   { icon: SiMysql, name: "MySQL" },
-  { icon: SiOracle, name: "Oracle DB" },
-  { icon: SiOracle, name: "PL/SQL" },
+  { icon: GrOracle, name: "Oracle DB" },
+  { icon: GrOracle, name: "PL/SQL" },
   { icon: SiArangodb, name: "ArangoDB" },
   { icon: SiNeo4J, name: "Neo4j" },
   
