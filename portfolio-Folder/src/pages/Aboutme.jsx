@@ -13,6 +13,9 @@ import valaorange from "../assets/valaorange.jpeg";
 import tecforge from "../assets/tec.png";
 import Feelscan from "../assets/Feelscan.png";
 import Creative from "../assets/Creative.png";
+import Lbanka from "../assets/LBANKADYALNA (1).png";
+import EtlSql from "../assets/etl.png";
+import { SiBitcoin } from "react-icons/si";
 import { LanguageContext } from "../LanguageContext"; // Importez le contexte
 
 
@@ -37,6 +40,9 @@ const Aboutme = () => {
       valableuPosition: "Internship in web development",
       tecforgeDescription: "A platform for scraping Moroccan public tenders and enabling semantic search on tender documents.",
       feelscanDescription: "A platform for detecting emotions from text and images.",
+      etlProjectDescription: "End-to-end ETL pipeline (SSIS) designed to centralize and analyze academic performance data, integrated with Power BI for advanced data visualization.",
+      lbankaProjectDescription: "Comprehensive digital banking system built with Spring Boot, React, and Oracle DB/PL-SQL. Features dedicated portals for users, employees, admins, and super-admins.",
+      cryptoProjectDescription: "This project implements a robust Dual-Write architecture: MongoDB (Raw data archive), InfluxDB (Optimized time-series for performance), Grafana (Dynamic market trends), Infrastructure (Docker & Docker Compose).",
       valableuProjects: [
         "Developed a responsive car rental platform",
         "A diverse catalogue of cars with a modern design",
@@ -76,6 +82,9 @@ creativeCompanyProjects: [
       tecforgeDescription: "Une plateforme pour le scraping des marchés publics marocains et la mise en place d’une recherche sémantique sur les documents d’appel d’offres.",
       valableuPosition: "Stage en développement web",
       feelscanDescription: "Une plateforme de détection des émotions à partir de textes et d’images.",
+      etlProjectDescription: "Pipeline ETL de bout en bout (SSIS) conçu pour centraliser et analyser les données de performance académique, intégré à Power BI pour une visualisation avancée des données.",
+      lbankaProjectDescription: "Système bancaire numérique complet conçu avec Spring Boot, React et Oracle DB/PL-SQL. Comprend des portails dédiés pour les utilisateurs, employés, administrateurs et super-administrateurs.",
+      cryptoProjectDescription: "Ce projet implémente une architecture Dual-Write robuste : MongoDB (Archivage), InfluxDB (Séries Temporelles optimisé), Grafana (Tendances de marché), Infrastructure (Docker & Docker Compose).",
       valableuProjects: [
         "Développement d'une plateforme de location de voitures responsive",
         "Un catalogue varié de voitures avec un design moderne",
@@ -197,7 +206,6 @@ creativeCompanyProjects: [
         githubUrl="https://github.com/Mohamed-boufous/Tecforge_project"
       />
       
-      {/* Carte 5 (ira à la ligne et sera centrée) */}
       <ProjectCard
         imageUrl={Feelscan}
         projectName="Feelscan"
@@ -205,8 +213,29 @@ creativeCompanyProjects: [
         githubUrl="https://github.com/Mohamed-boufous/Projet_de_stage"
       />
       
+      {/* Nouveaux Projets */}
+      <ProjectCard
+        imageUrl={EtlSql}
+        projectName="Projet ETL SQLServer"
+        description={texts[language].etlProjectDescription}
+        githubUrl="https://github.com/Mohamed-boufous/Projet-ETL-SQLServer"
+      />
 
-      {/* Vous pouvez ajouter d'autres cartes ici, elles suivront la même logique */}
+      <ProjectCard
+        imageUrl={Lbanka}
+        projectName="Lbanka Dyalna"
+        description={texts[language].lbankaProjectDescription}
+        githubUrl="https://github.com/Mohamed-boufous/Project_BDA"
+      />
+
+      <ProjectCard
+        // Pass a functional component returning the icon since ProjectCard expects an image URL or will need a custom render
+        iconComponent={<SiBitcoin className="w-full h-full text-orange-500 bg-white" />}
+        projectName="Crypto Market Pipeline"
+        description={texts[language].cryptoProjectDescription}
+        githubUrl="https://github.com/Mohamed-boufous/crypto-etl-pipeline"
+      />
+
 </div>
 
       {/* Section Expérience */}

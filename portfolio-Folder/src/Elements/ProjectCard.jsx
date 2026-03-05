@@ -2,7 +2,7 @@ import React from "react";
 import { Github } from "lucide-react";
 import { useDarkMode } from "../DarkModeContext";
 
-export default function ProjectCard({ imageUrl, projectName, description, githubUrl }) {
+export default function ProjectCard({ imageUrl, iconComponent, projectName, description, githubUrl }) {
   const { isDarkMode } = useDarkMode();
 
   return (
@@ -20,12 +20,18 @@ export default function ProjectCard({ imageUrl, projectName, description, github
             isDarkMode ? "bg-purple-600" : "bg-purple-300"
           }`}></div>
 
-          <div className="relative z-10 w-40 h-40 mb-6 bg-white/50 dark:bg-black/50 rounded-2xl p-4 flex items-center justify-center backdrop-blur-sm border border-black/5 dark:border-white/10 shadow-inner">
-            <img
-              src={imageUrl || "/placeholder.svg"}
-              alt={projectName}
-              className="object-contain w-full h-full drop-shadow-lg scale-95 group-hover:scale-105 transition-transform duration-500"
-            />
+          <div className="relative z-10 w-40 h-40 mb-6 bg-white/50 dark:bg-black/50 rounded-2xl flex items-center justify-center backdrop-blur-sm shadow-inner overflow-hidden border border-black/5 dark:border-white/10 p-4">
+            {iconComponent ? (
+              <div className="w-full h-full flex items-center justify-center drop-shadow-lg scale-95 group-hover:scale-105 transition-transform duration-500 overflow-hidden rounded-xl">
+                 {iconComponent}
+              </div>
+            ) : (
+              <img
+                src={imageUrl || "/placeholder.svg"}
+                alt={projectName}
+                className="object-contain w-full h-full drop-shadow-lg scale-95 group-hover:scale-105 transition-transform duration-500"
+              />
+            )}
           </div>
 
           <h2 className={`relative z-10 text-2xl font-bold text-center tracking-tight transition-colors duration-300 ${

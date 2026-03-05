@@ -4,6 +4,8 @@ import sololearn from "./assets/sololearn.png";
 import linkdin from "./assets/LinkdeIn.png";
 import AppsClub from "./assets/AppsClub.jpg";
 import Oracle from "./assets/Oracle-Logo.png";
+import gea from "./assets/gea.png";
+import nasa from "./assets/nasa.png";
 
 const certificates = [
   {
@@ -108,7 +110,60 @@ const certificates = [
     imageUrl: Data365,
     link: "https://learn.365datascience.com/certificates/CC-AB4AAF26E8/",
   },
-  
+  {
+    id: 12,
+    title: "Youth4Climate",
+    title_fr: "Youth4Climate",
+    platform: "GEA",
+    platform_fr: "GEA",
+    imageUrl: gea,
+    link: "https://drive.google.com/file/d/1Nn5SaHpEbQEpXBz1JDeiawo87CUzohYO/view?usp=sharing",
+  },
+  {
+    id: 13,
+    title: "Understanding Cloud Computing",
+    title_fr: "Comprendre le Cloud Computing",
+    platform: "DataCamp",
+    platform_fr: "DataCamp",
+    imageUrl: datacamp,
+    link: "https://drive.google.com/file/d/1R7S5u1nivBQozJlB7h6ETy_Qn9ERWI7T/view?usp=sharing",
+  },
+  {
+    id: 14,
+    title: "Machine Learning in Python",
+    title_fr: "Machine Learning en Python",
+    platform: "365 Data Science",
+    platform_fr: "365 Data Science",
+    imageUrl: Data365,
+    link: "https://drive.google.com/file/d/1yO1QJful4-QMMVhMupDXG6ylNuqc3OwI/view?usp=sharing",
+  },
+  {
+    id: 15,
+    title: "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
+    title_fr: "Associé Certifié en Fondations d'IA Oracle Cloud Infrastructure 2025",
+    platform: "Oracle",
+    platform_fr: "Oracle",
+    imageUrl: Oracle,
+    link: "https://drive.google.com/file/d/1R_4ZfXqKmXZbRpYVd4ifunmDmm0X_Bl-/view?usp=sharing",
+  },
+  {
+    id: 16,
+    title: "2025 NASA International Space Apps Challenge",
+    title_fr: "NASA International Space Apps Challenge 2025",
+    platform: "NASA",
+    platform_fr: "NASA",
+    imageUrl: nasa,
+    link: "https://drive.google.com/file/d/1m8bzxQ9Y3ZgE4HlFo9Nq7A3lRgjBp5QE/view?usp=sharing",
+  },
+  {
+    id: 17,
+    title: "AWS Concepts",
+    title_fr: "Concepts AWS",
+    platform: "DataCamp",
+    platform_fr: "DataCamp",
+    imageUrl: datacamp,
+    link: "https://drive.google.com/file/d/10_WHXZjZf1Wn04pYX81JG1Y6KAf8Ebn9/view?usp=sharing",
+  },
 ];
 
 export default certificates;

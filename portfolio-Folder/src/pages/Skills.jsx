@@ -62,7 +62,7 @@ const Skills = () => {
   const { language } = useContext(LanguageContext); // Utilisez le contexte pour obtenir la langue
 
   return (
-    <div className="flex flex-col items-center mt-8 md:mt-[4rem] space-y-8">
+    <div className="flex flex-col items-center mt-8 md:mt-[4rem] pt-16 md:pt-24 space-y-8">
       {/* Section "Skills" */}
       <div className="w-full flex justify-center">
         <AnimatedText

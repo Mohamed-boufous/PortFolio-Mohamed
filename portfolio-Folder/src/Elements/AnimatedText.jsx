@@ -1,79 +1,64 @@
-import { useSprings, animated } from '@react-spring/web';
-import { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 const AnimatedText = ({
   text = '',
   className = '',
-  delay = 100,
-  animationFrom = { opacity: 0, transform: 'translate3d(0,40px,0)' },
-  animationTo = { opacity: 1, transform: 'translate3d(0,0,0)' },
-  easing = 'easeOutCubic',
-  threshold = 0.1,
-  rootMargin = '-100px',
-  textAlign = 'center',
+  delay = 50, // Default delay per letter
+  rootMargin = '-50px',
   onAnimationComplete,
 }) => {
-  const letters = text.split('');
-  const [inView, setInView] = useState(false);
-  const ref = useRef();
-  const animatedCount = useRef(0);
+  const letters = typeof text === 'string' ? text.split('') : [];
+  const ref = useRef(null);
+  
+  // Trigger animation once when the element comes into view
+  const isInView = useInView(ref, { once: true, margin: rootMargin });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.unobserve(ref.current);
-        }
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: delay / 1000,
       },
-      { threshold, rootMargin }
-    );
+    },
+  };
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, [threshold, rootMargin]);
-
-  const springs = useSprings(
-    letters.length,
-    letters.map((_, i) => ({
-      from: animationFrom,
-      to: inView
-        ? async (next) => {
-            await next(animationTo);
-            animatedCount.current += 1;
-            if (animatedCount.current === letters.length && onAnimationComplete) {
-              onAnimationComplete();
-            }
-          }
-        : animationFrom,
-      delay: i * delay,
-      config: { easing },
-    }))
-  );
+  const childVariants = {
+    hidden: {
+      opacity: 0,
+      y: 40,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100,
+      },
+    },
+  };
 
   return (
-    <p
+    <motion.div
       ref={ref}
-      className={`animated-text-parent  inline ${className}`}
-      style={{ textAlign }}
+      className={`inline-block ${className}`}
+      variants={containerVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      onAnimationComplete={onAnimationComplete}
     >
-      {springs.map((props, index) => (
-        <animated.span
+      {letters.map((letter, index) => (
+        <motion.span
           key={index}
-          style={props}
-          className="inline-block transform transition-opacity will-change-transform"
+          variants={childVariants}
+          className="inline-block will-change-transform"
         >
-          {letters[index] === ' ' ? ' ' : letters[index]}
-        </animated.span>
+          {letter === ' ' ? '\u00A0' : letter}
+        </motion.span>
       ))}
-    </p>
+    </motion.div>
   );
 };
 
