@@ -95,36 +95,63 @@ const Home = () => {
     />
 </div>
 
-                <h1 className='text-2xl md:text-[2rem] font-bold mb-4'>
-                    {language === "en" ? "My name is" : "Je m'appelle"}{' '}
-                    <span className='inline-block'>
-                        <TrueFocus
-                            sentence="Mohamed Boufous"
-                            manualMode={false}
-                            blurAmount={5}
-                            borderColor="purple"
-                            animationDuration={2}
-                            pauseBetweenAnimations={0.02}
-                        />
-                    </span>
-                </h1>
-                <p
-                    className={`text-lg md:text-xl leading-7 mb-6 ${
-                        isDarkMode ? "text-gray-400" : "text-gray-700"
-                    }`}
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.8 }}
+                    className="mb-8"
                 >
-                    {language === "en" ? (
-                        <>
-                            <span className='block'>I'm a student in AI and Big Data Engineering.</span>
-                            <span className='block'>I'm interested in web development, AI, and Big Data.</span>
-                        </>
-                    ) : (
-                        <>
-                            <span className='block'>Je suis étudiant en ingénierie de l'IA et du Big Data.</span>
-                            <span className='block'>Je suis intéressé par le développement web, l'IA et le Big Data.</span>
-                        </>
-                    )}
-                </p>
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] font-black mb-6 tracking-tight leading-tight drop-shadow-sm">
+                        <span className={`block mb-4 text-sm md:text-base font-bold uppercase tracking-[0.3em] bg-clip-text text-transparent bg-gradient-to-r ${isDarkMode ? "from-purple-300 to-indigo-300" : "from-purple-700 to-indigo-700"}`}>
+                            {language === "en" ? "My name is" : "Je m'appelle"}
+                        </span>
+                        <span className="inline-block mt-1">
+                            <TrueFocus
+                                sentence="Mohamed Boufous"
+                                manualMode={false}
+                                blurAmount={5}
+                                borderColor="purple"
+                                animationDuration={2}
+                                pauseBetweenAnimations={0.02}
+                            />
+                        </span>
+                    </h1>
+                    
+                    <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.6, duration: 0.8 }}
+                        className={`relative pl-6 py-2 border-l-2 md:border-l-4 ${isDarkMode ? "border-purple-500/50" : "border-purple-600/70"} 
+                                    bg-gradient-to-r ${isDarkMode ? "from-purple-900/10 to-transparent" : "from-purple-100/40 to-transparent"} 
+                                    rounded-r-xl`}
+                    >
+                        <p
+                            className={`text-lg sm:text-xl md:text-2xl leading-relaxed md:leading-relaxed font-normal tracking-wide ${
+                                isDarkMode ? "text-neutral-200" : "text-neutral-800"
+                            }`}
+                        >
+                            {language === "en" ? (
+                                <>
+                                    <span className="block mb-2">
+                                        I'm a student in <b className={`font-bold bg-clip-text text-transparent bg-gradient-to-r ${isDarkMode ? "from-purple-400 to-blue-400" : "from-purple-700 to-blue-700"}`}>AI and Big Data Engineering</b>.
+                                    </span>
+                                    <span className={`block text-base md:text-lg font-medium opacity-90 transition-colors duration-300 ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
+                                        I'm interested in web development, AI, and Big Data.
+                                    </span>
+                                </>
+                            ) : (
+                                <>
+                                    <span className="block mb-2">
+                                        Je suis étudiant en <b className={`font-bold bg-clip-text text-transparent bg-gradient-to-r ${isDarkMode ? "from-purple-400 to-blue-400" : "from-purple-700 to-blue-700"}`}>ingénierie de l'IA et du Big Data</b>.
+                                    </span>
+                                    <span className={`block text-base md:text-lg font-medium opacity-90 transition-colors duration-300 ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
+                                        Je suis intéressé par le développement web, l'IA et le Big Data.
+                                    </span>
+                                </>
+                            )}
+                        </p>
+                    </motion.div>
+                </motion.div>
 
                 {/* Bouton de téléchargement avec animation */}
                 <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
