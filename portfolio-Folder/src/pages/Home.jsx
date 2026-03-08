@@ -84,16 +84,18 @@ const Home = () => {
             {/* Contenu principal en bas sur les petits écrans */}
             <div className="order-2 md:order-1 w-full text-center md:text-left">
                 {/* Centrer uniquement sur les écrans mobiles */}
-                <div className="flex justify-center md:justify-start">
-    <BlurText
-        text={language === "en" ? "Welcome To My Portfolio" : "Bienvenue sur mon portfolio"}
-        delay={200}
-        animateBy="words"
-        direction="top"
-        onAnimationComplete={handleAnimationComplete}
-        className="text-2xl sm:text-2xl md:text-[2.2rem] lg:text-5xl font-bold mb-4 md:mb-7 whitespace-nowrap"
-    />
-</div>
+                <div className="flex justify-center md:justify-start mb-2 md:mb-4">
+                    <BlurText
+                        text={language === "en" ? "Welcome To My Portfolio" : "Bienvenue sur mon portfolio"}
+                        delay={150}
+                        animateBy="words"
+                        direction="top"
+                        onAnimationComplete={handleAnimationComplete}
+                        className={`text-xl sm:text-2xl md:text-3xl font-semibold tracking-wider whitespace-nowrap ${
+                            isDarkMode ? "text-neutral-300 drop-shadow-sm" : "text-neutral-600 drop-shadow-sm"
+                        }`}
+                    />
+                </div>
 
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
