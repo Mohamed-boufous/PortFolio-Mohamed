@@ -6,6 +6,8 @@ import { AsciiArt } from "../components/ui/ascii-art";
 import { LanguageContext } from "../LanguageContext";
 import { useDarkMode } from "../DarkModeContext";
 import profileImage from "../assets/Mohamed_Boufous.jpg";
+import SEOHead from "../components/SEOHead";
+
 
 const handleAnimationComplete = () => {
     console.log('Animation completed!');
@@ -21,7 +23,13 @@ const Home = () => {
     };
 
     return (
-        <div className="flex flex-col md:flex-row items-center justify-center md:justify-between min-h-screen p-4 md:p-8 pt-20 md:pt-24 relative z-10">
+        <main>
+            <SEOHead
+                title="Home"
+                description="Mohamed Boufous – AI and Big Data Engineering student at ENSA Agadir. Explore my portfolio showcasing web development, machine learning, and data engineering projects."
+                path="/"
+            />
+            <div className="flex flex-col md:flex-row items-center justify-center md:justify-between min-h-screen p-4 md:p-8 pt-20 md:pt-24 relative z-10">
             {/* Interactive Profile Picture Container */}
             <div className="order-1 md:order-2 mb-8 md:mb-0 w-full md:w-1/2 flex justify-center perspective-1000">
                 <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full shadow-2xl overflow-hidden border-4 border-transparent transition-all duration-700">
@@ -206,6 +214,7 @@ const Home = () => {
                 </div>
             </div>
         </div>
+        </main>
     );
 };
 

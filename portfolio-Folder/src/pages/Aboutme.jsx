@@ -1,4 +1,5 @@
 import React, { useContext } from "react"; // Ajoutez useContext
+import SEOHead from "../components/SEOHead";
 import { SchoolCard } from '../Elements/SchoolCard';
 import est from "../assets/EST-Agadir.jpg";
 import Ensaa from "../assets/Ensaa.png";
@@ -114,7 +115,13 @@ creativeCompanyProjects: [
   };
 
   return (
-    <div className='mt-[4rem] pt-16 md:pt-24'>
+    <main>
+      <SEOHead
+        title="About Me – Education, Projects & Experience"
+        description="Learn about Mohamed Boufous: education at ENSA Agadir and EST Agadir, projects including LibroLink, Gig Galaxy, FeelScan, ETL pipelines, and professional internship experiences."
+        path="/aboutme"
+      />
+      <div className='mt-[4rem] pt-16 md:pt-24'>
       {/* Section Éducation */}
       <div className="w-full flex justify-center">
         <AnimatedText
@@ -293,6 +300,7 @@ creativeCompanyProjects: [
       
 </div>
     </div>
+    </main>
   );
 };
 

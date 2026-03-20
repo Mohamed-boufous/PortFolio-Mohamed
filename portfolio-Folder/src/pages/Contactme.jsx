@@ -1,4 +1,5 @@
 import React from 'react';
+import SEOHead from "../components/SEOHead";
 import ContactCard from "../Elements/ContactCard";
 import { Globe3D } from '../components/ui/3d-globe';
 import profileImage from "../assets/Mohamed_Boufous.jpg";
@@ -18,7 +19,13 @@ const Contactme = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-24 pb-12 relative overflow-hidden flex flex-col items-center justify-center">
+    <main>
+      <SEOHead
+        title="Contact Me"
+        description="Get in touch with Mohamed Boufous. Based in Agadir, Morocco. Reach out for collaboration, job opportunities, or project discussions in AI, Big Data, and web development."
+        path="/contactme"
+      />
+      <div className="min-h-screen pt-24 pb-12 relative overflow-hidden flex flex-col items-center justify-center">
       {/* Container for Form and Globe */}
       <div className="container mx-auto px-4 z-10 w-full max-w-7xl">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-32">
@@ -58,6 +65,7 @@ const Contactme = () => {
         </div>
       </div>
     </div>
+    </main>
   );
 };
 

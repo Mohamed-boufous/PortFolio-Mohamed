@@ -1,5 +1,6 @@
 import React, { useContext } from "react"; // Ajoutez useContext
 import Card from '../Elements/Card';
+import SEOHead from "../components/SEOHead";
 import AnimatedText from '../Elements/AnimatedText';
 import RollingGallery from '../Elements/RollingGallery';
 import { 
@@ -63,7 +64,13 @@ const Skills = () => {
   const { language } = useContext(LanguageContext); // Utilisez le contexte pour obtenir la langue
 
   return (
-    <div className="flex flex-col items-center mt-8 md:mt-[4rem] pt-16 md:pt-24 space-y-8">
+    <main>
+      <SEOHead
+        title="Skills & Certificates"
+        description="Mohamed Boufous's technical skills: Python, Java, React, Machine Learning, Data Engineering, ETL, Power BI, Docker, and professional certificates including AWS and DataCamp."
+        path="/skills"
+      />
+      <div className="flex flex-col items-center mt-8 md:mt-[4rem] pt-16 md:pt-24 space-y-8">
       {/* Section "Skills" */}
       <div className="w-full flex justify-center">
         <AnimatedText
@@ -126,6 +133,7 @@ const Skills = () => {
         />
       </div>
     </div>
+    </main>
   );
 };
 

@@ -35,7 +35,7 @@ export default function Header() {
               whileTap={{ scale: 0.95 }}
               className="h-16 w-auto cursor-pointer"
               src={isDarkMode ? logoWhite : logo}
-              alt="Your Company"
+              alt="Mohamed Boufous Portfolio"
               onClick={goToHome}
             />
           </div>

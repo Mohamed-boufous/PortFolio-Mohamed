@@ -1,0 +1,8 @@
+# robots.txt for Mohamed Boufous Portfolio
+# https://mohamedboufous.vercel.app
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://mohamedboufous.vercel.app/sitemap.xml
